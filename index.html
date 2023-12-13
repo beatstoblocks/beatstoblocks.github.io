@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0"></script>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -137,20 +139,30 @@
             <p>This pipeline uses Demucs to split the track into bass, drums, vocals, and other sounds. 
                 It then splits the other stems through Spleeter to obtain the piano and other stems separately. 
                 Finally, it transcribes all of these files through MT3. The specific files chosen for this pipeline are:
-                <ul>
-                    <li>Demucs with Spleeter: Piano.mid, Other.mid</li>
-                    <li>Demucs: Drums.mid, Bass.mid</li>
-                </ul>
+                <ol>
+                    <li>Demucs with Spleeter:
+                        <ul> 
+                            <li> piano.mid </li>
+                            <li> other.mid </li>
+                        </ul>
+                    </li>
+                    <li>Demucs only:
+                        <ul>
+                            <li> drums.mid </li>
+                            <li> bass.mid </li>
+                        </ul>
+                    </li>
+                </ol>
             </p>
             
             <h3>Pipeline #3 - Spleeter and MT3</h3>
             <p>This pipeline uses Spleeter to split the track into piano, drums, bass, and other. 
                 These stems are then transcribed into MIDI using MT3. The specific files chosen for this pipeline are:
                 <ul>
-                    <li>Piano.mid</li>
-                    <li>Drums.mid</li>
-                    <li>Bass.mid</li>
-                    <li>Other.mid</li>
+                    <li>piano.mid</li>
+                    <li>drums.mid</li>
+                    <li>bass.mid</li>
+                    <li>other.mid</li>
                 </ul>
             </p>
             
@@ -158,26 +170,298 @@
             <p>This pipeline uses Demucs to split the track into bass, drums, vocals, and other sounds. 
                 It then splits the other stems through Spleeter to obtain the piano and other stems separately. 
                 Finally, it transcribes all of these files through Spotify Basic Pitch. The specific files chosen for this pipeline are:
-                <ul>
-                    <li>Demucs with Spleeter: Piano.mid, Other.mid</li>
-                    <li>Demucs: Drums.mid, Bass.mid</li>
-                </ul>
             </p>
-            
+                
+            <ol>
+                <li>Demucs with Spleeter:
+                    <ul> 
+                        <li> piano.mid </li>
+                        <li> other.mid </li>
+                    </ul>
+                </li>
+                <li>Demucs only:
+                    <ul>
+                        <li> drums.mid </li>
+                        <li> bass.mid </li>
+                    </ul>
+                </li>
+            </ol>
+
             <h3>Pipeline #5 - Spleeter and Spotify Basic Pitch</h3>
             <p>This pipeline uses Spleeter to split the track into piano, drums, bass, and other. 
                 These stems are then transcribed into MIDI using Spotify Basic Pitch. The specific files chosen for this pipeline are:
                 <ul>
-                    <li>Piano.mid</li>
-                    <li>Drums.mid</li>
-                    <li>Bass.mid</li>
-                    <li>Other.mid</li>
+                    <li>piano.mid</li>
+                    <li>drums.mid</li>
+                    <li>bass.mid</li>
+                    <li>other.mid</li>
                 </ul>
             </p>
-            
     </div>
 
-    <!-- Continue with other sections... -->
+    <br>
+    <div class="section">
+        <h2>Dataset</h2>
+        <p>Insert info here
+        </p>
+    </div>
+
+    <br>
+    <div class="section">
+        <h2>Outputs and Results</h2>
+        <h3>Input File</h3>
+        <p>This is our input file from the BabySlakh dataset. 
+            This is the first minute of Track00001 that we will be 
+            inputting into our program:</p>
+        <audio controls autoplay>
+            <source src = "output_data/sounds/sample.wav" type="audio/wav">
+        </audio>
+
+        <h3>Demucs Splitting</h3>
+        <p>When putting our input file of Track00001 
+            through Demucs, the following splits of 
+            bass.wav, drums.wav, vocals.wav, and 
+            other.wav are created:
+        </p>
+        <h4>bass.wav</h4>
+        <audio controls autoplay>
+            <source src = "output_data/sounds/sample.wav" type="audio/wav">
+        </audio>
+        <h4>drums.wav</h4>
+        <audio controls autoplay>
+            <source src = "output_data/sounds/sample.wav" type="audio/wav">
+        </audio>
+        <h4>vocals.wav</h4>
+        <audio controls autoplay>
+            <source src = "output_data/sounds/sample.wav" type="audio/wav">
+        </audio>
+        <h4>other.wav</h4>
+        <audio controls autoplay>
+            <source src = "output_data/sounds/sample.wav" type="audio/wav">
+        </audio>
+
+        <h3>Spleeter Splitting</h3>
+        <p>When putting our input file of Track00001 
+            through Spleeter, the following splits of 
+            bass.wav, drums.wav, vocals.wav, and 
+            other.wav, and piano.wav are created:
+        </p>
+        <h4>bass.wav</h4>
+        <audio controls autoplay>
+            <source src = "output_data/sounds/sample.wav" type="audio/wav">
+        </audio>
+        <h4>drums.wav</h4>
+        <audio controls autoplay>
+            <source src = "output_data/sounds/sample.wav" type="audio/wav">
+        </audio>
+        <h4>vocals.wav</h4>
+        <audio controls autoplay>
+            <source src = "output_data/sounds/sample.wav" type="audio/wav">
+        </audio>
+        <h4>other.wav</h4>
+        <audio controls autoplay>
+            <source src = "output_data/sounds/sample.wav" type="audio/wav">
+        </audio>
+        <h4>piano.wav</h4>
+        <audio controls autoplay>
+            <source src = "output_data/sounds/sample.wav" type="audio/wav">
+        </audio>
+
+
+        <h3>Demucs into Spleeter</h3>
+        <p>After obtaining the outputs from Demucs, 
+            to further isolate the piano instrument 
+            from the other.wav split, Demucs output 
+            of other.wav is put through spleeter to 
+            obtain the following two files of 
+            other.wav and piano.wav. 
+        </p>
+
+        <h4>other.wav</h4>
+        <audio controls autoplay>
+            <source src = "output_data/sounds/sample.wav" type="audio/wav">
+        </audio>
+        <h4>piano.wav</h4>
+        <audio controls autoplay>
+            <source src = "output_data/sounds/sample.wav" type="audio/wav">
+        </audio>
+
+        
+        <h3>Spotify Basic Pitch Output</h3>
+        <p>After obtaining the split files 
+            from Demucs, Spleeter, and Demucs 
+            into Spleeter, the files are then 
+            transcribed to MIDI using Spotify 
+            Basic Pitch: 
+        </p>
+
+        <h4>Demucs</h4>
+        <h5>bass.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+        
+        <h5>drums.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+
+        <h5>vocals.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+
+        <h5>other.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+        
+        <h4>Spleeter</h4>
+        <h5>bass.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+        
+        <h5>drums.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+
+        <h5>vocals.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+
+        <h5>other.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+
+        <h5>piano.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+
+        <h4>Demucs into Spleeter</h4>
+        <h5>other.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+        
+        <h5>piano.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+        
+        <h3>MT3</h3>
+        <p>Additionally, these same split files as above are
+             transcribed to MIDI using MT3:
+        </p>
+
+        <h4>Demucs</h4>
+        <h5>bass.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+        
+        <h5>drums.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+
+        <h5>vocals.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+
+        <h5>other.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+        
+        <h4>Spleeter</h4>
+        <h5>bass.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+        
+        <h5>drums.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+
+        <h5>vocals.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+
+        <h5>other.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+
+        <h5>piano.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+
+        <h4>Demucs into Spleeter</h4>
+        <h5>other.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+        
+        <h5>piano.mid</h5>
+        <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
+        <midi-player
+        src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        sound-font visualizer="#myVisualizer">
+        </midi-player>
+        
+    
+    </div>
 
 </body>
 </html>
