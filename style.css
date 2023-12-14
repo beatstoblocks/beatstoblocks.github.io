@@ -1,32 +1,128 @@
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 20px;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
+.blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('assets/minecraft-background.jpg') center/cover fixed;
+    /* filter: blur(20px); Adjust the blur amount as needed */
+    z-index: -1; /* Place the blurred layer behind other content */
+}
+
+.background-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5; /* Adjust the opacity as needed */
+    z-index: 1;
+}
+
+body {
+    font-family: 'Raleway';
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.title {
+    color: white; 
+    z-index: 2;
+}
+
+.title h1 {
+    color: white;
+}
+
+.title p {
+    font-weight:  200;
+    color: white;
+}
 h1 {
-    color: #333;
+    color: #000000;
 }
 
 h2 {
-    color: #555;
+    color: #000000;
 }
 
 p {
-    color: #777;
+    color: #000000;
 }
 
-code {
-    background-color: #f8f8f8;
-    padding: 2px 4px;
-    color: #333;
-    border-radius: 4px;
-    font-family: 'Courier New', monospace;
+h1, h2 {
+    text-align: center; 
 }
+
+h5 {
+    font-size: 1em;
+}
+
 
 .section {
-    margin-bottom: 20px;
+    width: 90%; /* Adjust width for larger screens */
+    max-width: 1000px;
+    text-align: left;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    background-color: white;
 }
 
 .pipeline {
     margin-bottom: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 12px; /* Adjust the width as needed */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Adjust the color on hover */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #333; /* Adjust the color */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #222; /* Adjust the color */
+}
+
+/* Handle on active */
+::-webkit-scrollbar-thumb:active {
+    background: #666; /* Adjust the color on active state */
+}
+
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    .section {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .section {
+        width: 95%;
+    }
 }

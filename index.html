@@ -6,12 +6,20 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Beats To Blocks</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <div class="background">
+            <div class="blur"></div>
+            <img src="assets/minecraft-background.jpg" alt="Background Image" class="background-image">
+        </div>
 
-        <h1>Beats To Blocks</h1>
-        <p><strong>By Peter Akdemir, Dustin La, Joshua Quizon, Rahul Shah</strong></p>
+        <div class = "title">        
+            <h1>Beats To Blocks</h1>
+            <p><strong>By Peter Akdemir, Dustin La, Joshua Quizon, Rahul Shah</strong></p>
+        </div>
+
 
         <div class="section">
             <h2>Overview</h2>
@@ -40,7 +48,6 @@
                 “cool” aspect of audio transcription.</p>
         </div>
 
-        <br>
         <div class="section">
             <h2>Machine Listening Models</h2>
             <h3>Spleeter</h3>
@@ -82,7 +89,7 @@
                 estimates notes, not instruments.
             </p>
         </div>
-        <br>
+
         <div class="section">
             <h2>Open Note Block Studio</h2>
             <p>Open Note Block Studio is a software that allows users to 
@@ -95,7 +102,6 @@
             </p>
         </div>
 
-        <br>
         <div class="section">
             <h2>Pipelines</h2>
             <h3>Pipeline #1 - MT3 Only</h3>
@@ -106,7 +112,7 @@
                 <p>This pipeline uses Demucs to split the track into bass, drums, vocals, and other sounds. 
                     It then splits the other stems through Spleeter to obtain the piano and other stems separately. 
                     Finally, it transcribes all of these files through MT3. The specific files chosen for this pipeline are:
-                    <ol>
+                    <ul>
                         <li>Demucs with Spleeter:
                             <ul> 
                                 <li> piano.mid </li>
@@ -119,7 +125,7 @@
                                 <li> bass.mid </li>
                             </ul>
                         </li>
-                    </ol>
+                    </ul>
                 </p>
                 
                 <h3>Pipeline #3 - Spleeter and MT3</h3>
@@ -139,7 +145,7 @@
                     Finally, it transcribes all of these files through Spotify Basic Pitch. The specific files chosen for this pipeline are:
                 </p>
                     
-                <ol>
+                <ul>
                     <li>Demucs with Spleeter:
                         <ul> 
                             <li> piano.mid </li>
@@ -152,7 +158,7 @@
                             <li> bass.mid </li>
                         </ul>
                     </li>
-                </ol>
+                </ul>
 
                 <h3>Pipeline #5 - Spleeter and Spotify Basic Pitch</h3>
                 <p>This pipeline uses Spleeter to split the track into piano, drums, bass, and other. 
@@ -166,14 +172,12 @@
                 </p>
         </div>
 
-        <br>
         <div class="section">
             <h2>Dataset</h2>
             <p>Insert info here
             </p>
         </div>
 
-        <br>
         <div class="section">
             <h2>Outputs and Results</h2>
             <h3>Input File</h3>
@@ -190,19 +194,19 @@
                 bass.wav, drums.wav, vocals.wav, and 
                 other.wav are created:
             </p>
-            <h4>bass.wav</h4>
+            <h5>bass.wav</h5>
             <audio controls autoplay>
                 <source src = "output_data/sounds/sample.wav" type="audio/wav">
             </audio>
-            <h4>drums.wav</h4>
+            <h5>drums.wav</h5>
             <audio controls autoplay>
                 <source src = "output_data/sounds/sample.wav" type="audio/wav">
             </audio>
-            <h4>vocals.wav</h4>
+            <h5>vocals.wav</h5>
             <audio controls autoplay>
                 <source src = "output_data/sounds/sample.wav" type="audio/wav">
             </audio>
-            <h4>other.wav</h4>
+            <h5>other.wav</h5>
             <audio controls autoplay>
                 <source src = "output_data/sounds/sample.wav" type="audio/wav">
             </audio>
@@ -213,23 +217,23 @@
                 bass.wav, drums.wav, vocals.wav, and 
                 other.wav, and piano.wav are created:
             </p>
-            <h4>bass.wav</h4>
+            <h5>bass.wav</h5>
             <audio controls autoplay>
                 <source src = "output_data/sounds/sample.wav" type="audio/wav">
             </audio>
-            <h4>drums.wav</h4>
+            <h5>drums.wav</h5>
             <audio controls autoplay>
                 <source src = "output_data/sounds/sample.wav" type="audio/wav">
             </audio>
-            <h4>vocals.wav</h4>
+            <h5>vocals.wav</h5>
             <audio controls autoplay>
                 <source src = "output_data/sounds/sample.wav" type="audio/wav">
             </audio>
-            <h4>other.wav</h4>
+            <h5>other.wav</h5>
             <audio controls autoplay>
                 <source src = "output_data/sounds/sample.wav" type="audio/wav">
             </audio>
-            <h4>piano.wav</h4>
+            <h5>piano.wav</h5>
             <audio controls autoplay>
                 <source src = "output_data/sounds/sample.wav" type="audio/wav">
             </audio>
@@ -244,11 +248,11 @@
                 other.wav and piano.wav. 
             </p>
 
-            <h4>other.wav</h4>
+            <h5>other.wav</h5>
             <audio controls autoplay>
                 <source src = "output_data/sounds/sample.wav" type="audio/wav">
             </audio>
-            <h4>piano.wav</h4>
+            <h5>piano.wav</h5>
             <audio controls autoplay>
                 <source src = "output_data/sounds/sample.wav" type="audio/wav">
             </audio>
@@ -432,31 +436,31 @@
                 transcribed to MIDI using MT3:
             </p>
 
-            <h4>Pipeline #1 Combined MIDI</h4>
+            <h5>Pipeline #1 Combined MIDI</h5>
             <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
             <midi-player
             src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
             sound-font visualizer="#myVisualizer">
             </midi-player>
-            <h4>Pipeline #2 Combined MIDI</h4>
+            <h5>Pipeline #2 Combined MIDI</h5>
             <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
             <midi-player
             src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
             sound-font visualizer="#myVisualizer">
             </midi-player>
-            <h4>Pipeline #3 Combined MIDI</h4>
+            <h5>Pipeline #3 Combined MIDI</h5>
             <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
             <midi-player
             src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
             sound-font visualizer="#myVisualizer">
             </midi-player>
-            <h4>Pipeline #4 Combined MIDI</h4>
+            <h5>Pipeline #4 Combined MIDI</h5>
             <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
             <midi-player
             src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
             sound-font visualizer="#myVisualizer">
             </midi-player>
-            <h4>Pipeline #5 Combined MIDI</h4>
+            <h5>Pipeline #5 Combined MIDI</h5>
             <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
             <midi-player
             src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
@@ -469,23 +473,23 @@
                 Finally, the NBS Files are converted to wav audio and produce the final output:
             </p>
 
-            <h4>Pipeline #1</h4>
+            <h5>Pipeline #1</h5>
             <audio controls autoplay>
                 <source src = "output_data/sounds/sample.wav" type="audio/wav">
             </audio>
-            <h4>Pipeline #2</h4>
+            <h5>Pipeline #2</h5>
             <audio controls autoplay>
                 <source src = "output_data/sounds/sample.wav" type="audio/wav">
             </audio>
-            <h4>Pipeline #3</h4>
+            <h5>Pipeline #3</h5>
             <audio controls autoplay>
                 <source src = "output_data/sounds/sample.wav" type="audio/wav">
             </audio>
-            <h4>Pipeline #4</h4>
+            <h5>Pipeline #4</h5>
             <audio controls autoplay>
                 <source src = "output_data/sounds/sample.wav" type="audio/wav">
             </audio>
-            <h4>Pipeline #5</h4>
+            <h5>Pipeline #5</h5>
             <audio controls autoplay>
                 <source src = "output_data/sounds/sample.wav" type="audio/wav">
             </audio>
@@ -504,5 +508,9 @@
             </p>
         </div>
 
+        <!-- Include Bootstrap JS and Popper.js -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
 </html>
