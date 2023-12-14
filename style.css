@@ -1,0 +1,32 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+h2 {
+    color: #555;
+}
+
+p {
+    color: #777;
+}
+
+code {
+    background-color: #f8f8f8;
+    padding: 2px 4px;
+    color: #333;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.pipeline {
+    margin-bottom: 10px;
+}
