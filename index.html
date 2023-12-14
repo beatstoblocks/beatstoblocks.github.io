@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.4.0"></script>
-
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Beats To Blocks</title>
+        <title>Beats to Blocks</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div class="background">
-            <div class="blur"></div>
+            <!-- <div class="blur"></div> -->
             <img src="assets/minecraft-background.jpg" alt="Background Image" class="background-image">
         </div>
 
         <div class = "title">        
-            <h1>Beats To Blocks</h1>
+            <h1>Beats to Blocks</h1>
             <p><strong>By Peter Akdemir, Dustin La, Joshua Quizon, Rahul Shah</strong></p>
         </div>
 
@@ -185,9 +183,7 @@
             <p>This is our input file from the BabySlakh dataset. 
                 This is the first minute of Track00001 that we will be 
                 inputting into our program:</p>
-            <audio controls autoplay>
-                <source src = "output_data/sounds/sample.wav" type="audio/wav">
-            </audio>
+            <audio controls><source src = "output_data/Track00012mix_files/Track00012mix.wav" type="audio/wav"></audio>
         </div>
 
         <div class="section">
@@ -198,21 +194,16 @@
                 other.wav are created:
             </p>
             <h5>bass.wav</h5>
-            <audio controls autoplay>
-                <source src = "output_data/sounds/sample.wav" type="audio/wav">
-            </audio>
+            <audio controls><source src = "output_data/Track00012mix_files/htdemucs/Track00012mix/bass.wav" type="audio/wav"></audio>
+            
             <h5>drums.wav</h5>
-            <audio controls autoplay>
-                <source src = "output_data/sounds/sample.wav" type="audio/wav">
-            </audio>
+            <audio controls><source src = "output_data/Track00012mix_files/htdemucs/Track00012mix/drums.wav" type="audio/wav"></audio>
+            
             <h5>vocals.wav</h5>
-            <audio controls autoplay>
-                <source src = "output_data/sounds/sample.wav" type="audio/wav">
-            </audio>
+            <audio controls><source src = "output_data/Track00012mix_files/htdemucs/Track00012mix/vocals.wav" type="audio/wav"></audio>
+            
             <h5>other.wav</h5>
-            <audio controls autoplay>
-                <source src = "output_data/sounds/sample.wav" type="audio/wav">
-            </audio>
+            <audio controls><source src = "output_data/Track00012mix_files/htdemucs/Track00012mix/other.wav" type="audio/wav"></audio>
         </div>
 
         <div class="section">
@@ -223,25 +214,19 @@
                 other.wav, and piano.wav are created:
             </p>
             <h5>bass.wav</h5>
-            <audio controls autoplay>
-                <source src = "output_data/sounds/sample.wav" type="audio/wav">
-            </audio>
+            <audio controls><source src = "output_data/Track00012mix_files/spleeter/Track00012mix/bass.wav" type="audio/wav"></audio>
+            
             <h5>drums.wav</h5>
-            <audio controls autoplay>
-                <source src = "output_data/sounds/sample.wav" type="audio/wav">
-            </audio>
+            <audio controls><source src = "output_data/Track00012mix_files/spleeter/Track00012mix/drums.wav" type="audio/wav"></audio>
+            
             <h5>vocals.wav</h5>
-            <audio controls autoplay>
-                <source src = "output_data/sounds/sample.wav" type="audio/wav">
-            </audio>
+            <audio controls><source src = "output_data/Track00012mix_files/spleeter/Track00012mix/vocals.wav" type="audio/wav"></audio>
+            
             <h5>other.wav</h5>
-            <audio controls autoplay>
-                <source src = "output_data/sounds/sample.wav" type="audio/wav">
-            </audio>
+            <audio controls><source src = "output_data/Track00012mix_files/spleeter/Track00012mix/other.wav" type="audio/wav"></audio>
+            
             <h5>piano.wav</h5>
-            <audio controls autoplay>
-                <source src = "output_data/sounds/sample.wav" type="audio/wav">
-            </audio>
+            <audio controls><source src = "output_data/Track00012mix_files/spleeter/Track00012mix/piano.wav" type="audio/wav"></audio>
         </div>
 
         <div class="section">
@@ -255,13 +240,10 @@
             </p>
 
             <h5>other.wav</h5>
-            <audio controls autoplay>
-                <source src = "output_data/sounds/sample.wav" type="audio/wav">
-            </audio>
+            <audio controls><source src = "output_data/Track00012mix_files/demucs_into_spleeter/other/other.wav" type="audio/wav"></audio>
+            
             <h5>piano.wav</h5>
-            <audio controls autoplay>
-                <source src = "output_data/sounds/sample.wav" type="audio/wav">
-            </audio>
+            <audio controls><source src = "output_data/Track00012mix_files/demucs_into_spleeter/other/piano.wav" type="audio/wav"></audio>
         </div>
 
         <div class="section">
@@ -270,88 +252,60 @@
                 from Demucs, Spleeter, and Demucs 
                 into Spleeter, the files are then 
                 transcribed to MIDI using Spotify 
-                Basic Pitch: 
+                Basic Pitch:
             </p>
 
             <h4>Demucs</h4>
             <h5>bass.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
-            
+            <midi-visualizer type="piano-roll" id="demucsBasicPitchBass" src="output_data/Track00012mix_files/demucs_basicPitch/bass.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/demucs_basicPitch/bass.mid" sound-font visualizer="#demucsBasicPitchBass"></midi-player>
+           
             <h5>drums.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="demucsBasicPitchDrums" src="output_data/Track00012mix_files/demucs_basicPitch/drums.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/demucs_basicPitch/drums.mid" sound-font visualizer="#demucsBasicPitchDrums"></midi-player>
 
             <h5>vocals.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="demucsBasicPitchVocals" src="output_data/Track00012mix_files/demucs_basicPitch/vocals.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/demucs_basicPitch/vocals.mid" sound-font visualizer="#demucsBasicPitchVocals"></midi-player>
 
             <h5>other.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="demucsBasicPitchOther" src="output_data/Track00012mix_files/demucs_basicPitch/other.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/demucs_basicPitch/other.mid" sound-font visualizer="#demucsBasicPitchOther"></midi-player>
+
+            <div class="spacer"></div>
             
             <h4>Spleeter</h4>
             <h5>bass.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
-            
+            <midi-visualizer type="piano-roll" id="spleeterBasicPitchBass" src="output_data/Track00012mix_files/spleeter_basicPitch/bass.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/spleeter_basicPitch/bass.mid" sound-font visualizer="#spleeterBasicPitchBass"></midi-player>
+           
             <h5>drums.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="spleeterBasicPitchDrums" src="output_data/Track00012mix_files/spleeter_basicPitch/drums.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/spleeter_basicPitch/drums.mid" sound-font visualizer="#spleeterBasicPitchDrums"></midi-player>
 
             <h5>vocals.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="spleeterBasicPitchVocals" src="output_data/Track00012mix_files/spleeter_basicPitch/vocals.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/spleeter_basicPitch/vocals.mid" sound-font visualizer="#spleeterBasicPitchVocals"></midi-player>
 
             <h5>other.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="spleeterBasicPitchOther" src="output_data/Track00012mix_files/spleeter_basicPitch/other.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/spleeter_basicPitch/other.mid" sound-font visualizer="#spleeterBasicPitchOther"></midi-player>
+
 
             <h5>piano.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="spleeterBasicPitchPiano" src="output_data/Track00012mix_files/spleeter_basicPitch/piano.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/spleeter_basicPitch/piano.mid" sound-font visualizer="#spleeterBasicPitchPiano"></midi-player>
+
+            <div class="spacer"></div>
 
             <h4>Demucs into Spleeter</h4>
             <h5>other.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
-            
+            <midi-visualizer type="piano-roll" id="demucsSpleeterBasicPitchOther" src="output_data/Track00012mix_files/demucs_into_spleeter_basicPitch/other.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/demucs_into_spleeter_basicPitch/other.mid" sound-font visualizer="#demucsSpleeterBasicPitchOther"></midi-player>
+
             <h5>piano.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="demucsSpleeterBasicPitchPiano" src="output_data/Track00012mix_files/demucs_into_spleeter_basicPitch/piano.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/demucs_into_spleeter_basicPitch/piano.mid" sound-font visualizer="#demucsSpleeterBasicPitchPiano"></midi-player>
         </div>
 
         <div class="section">
@@ -362,83 +316,55 @@
 
             <h4>Demucs</h4>
             <h5>bass.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
-            
+            <midi-visualizer type="piano-roll" id="demucsmt3Bass" src="output_data/Track00012mix_files/demucs_mt3/bass.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/demucs_mt3/bass.mid" sound-font visualizer="#demucsmt3Bass"></midi-player>
+           
             <h5>drums.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="demucsmt3Drums" src="output_data/Track00012mix_files/demucs_mt3/drums.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/demucs_mt3/drums.mid" sound-font visualizer="#demucsmt3Drums"></midi-player>
 
             <h5>vocals.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="demucsmt3Vocals" src="output_data/Track00012mix_files/demucs_mt3/vocals.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/demucs_mt3/vocals.mid" sound-font visualizer="#demucsmt3Vocals"></midi-player>
 
             <h5>other.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
-            
+            <midi-visualizer type="piano-roll" id="demucsmt3Other" src="output_data/Track00012mix_files/demucs_mt3/other.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/demucs_mt3/other.mid" sound-font visualizer="#demucsmt3Other"></midi-player>
+
+            <div class="spacer"></div>
+
             <h4>Spleeter</h4>
             <h5>bass.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
-            
+            <midi-visualizer type="piano-roll" id="spleetermt3Bass" src="output_data/Track00012mix_files/spleeter_mt3/bass.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/spleeter_mt3/bass.mid" sound-font visualizer="#spleetermt3Bass"></midi-player>
+           
             <h5>drums.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="spleetermt3Drums" src="output_data/Track00012mix_files/spleeter_mt3/drums.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/spleeter_mt3/drums.mid" sound-font visualizer="#spleetermt3Drums"></midi-player>
 
             <h5>vocals.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="spleetermt3Vocals" src="output_data/Track00012mix_files/spleeter_mt3/vocals.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/spleeter_mt3/vocals.mid" sound-font visualizer="#spleetermt3Vocals"></midi-player>
 
             <h5>other.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="spleetermt3Other" src="output_data/Track00012mix_files/spleeter_mt3/other.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/spleeter_mt3/other.mid" sound-font visualizer="#spleetermt3Other"></midi-player>
+
 
             <h5>piano.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="spleetermt3Piano" src="output_data/Track00012mix_files/spleeter_mt3/piano.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/spleeter_mt3/piano.mid" sound-font visualizer="#spleetermt3Piano"></midi-player>
+
+            <div class="spacer"></div>
 
             <h4>Demucs into Spleeter</h4>
             <h5>other.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
-            
+            <midi-visualizer type="piano-roll" id="demucsSpleetermt3Other" src="output_data/Track00012mix_files/demucs_into_spleeter_mt3/other.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/demucs_into_spleeter_mt3/other.mid" sound-font visualizer="#demucsSpleetermt3Other"></midi-player>
+
             <h5>piano.mid</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="demucsSpleetermt3Piano" src="output_data/Track00012mix_files/demucs_into_spleeter_mt3/piano.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/demucs_into_spleeter_mt3/piano.mid" sound-font visualizer="#demucsSpleetermt3Piano"></midi-player>
         </div>
 
         <div class="section">
@@ -448,35 +374,25 @@
             </p>
 
             <h5>Pipeline #1 Combined MIDI</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="pipeline1CombinedMIDI" src="output_data/Track00012mix_files/pipeline1/mt3_only/Track00012mix.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/pipeline1/mt3_only/Track00012mix.mid" sound-font visualizer="#pipeline1CombinedMIDI"></midi-player>
+       
             <h5>Pipeline #2 Combined MIDI</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="pipeline2CombinedMIDI" src="output_data/Track00012mix_files/pipeline2/pipeline2_combined_midi.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/pipeline2/pipeline2_combined_midi.mid" sound-font visualizer="#pipeline2CombinedMIDI"></midi-player>
+
             <h5>Pipeline #3 Combined MIDI</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="pipeline3CombinedMIDI" src="output_data/Track00012mix_files/pipeline3/pipeline3_combined_midi.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/pipeline3/pipeline3_combined_midi.mid" sound-font visualizer="#pipeline3CombinedMIDI"></midi-player>
+
             <h5>Pipeline #4 Combined MIDI</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="pipeline4CombinedMIDI" src="output_data/Track00012mix_files/pipeline4/pipeline4_combined_midi.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/pipeline4/pipeline4_combined_midi.mid" sound-font visualizer="#pipeline4CombinedMIDI"></midi-player>
+
             <h5>Pipeline #5 Combined MIDI</h5>
-            <midi-visualizer type="piano-roll" id="myVisualizer"></midi-visualizer>
-            <midi-player
-            src="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-            sound-font visualizer="#myVisualizer">
-            </midi-player>
+            <midi-visualizer type="piano-roll" id="pipeline5CombinedMIDI" src="output_data/Track00012mix_files/pipeline5/pipeline5_combined_midi.mid"></midi-visualizer>
+            <midi-player src="output_data/Track00012mix_files/pipeline5/pipeline5_combined_midi.mid" sound-font visualizer="#pipeline5CombinedMIDI"></midi-player>
+
         </div>
 
         <div class="section">
@@ -487,25 +403,19 @@
             </p>
 
             <h5>Pipeline #1</h5>
-            <audio controls autoplay>
-                <source src = "output_data/sounds/sample.wav" type="audio/wav">
-            </audio>
+            <audio controls><source src = "output_data/Track00012mix_files/pipeline1/p1_mc_Track00012mix.wav" type="audio/wav"></audio>
+            
             <h5>Pipeline #2</h5>
-            <audio controls autoplay>
-                <source src = "output_data/sounds/sample.wav" type="audio/wav">
-            </audio>
+            <audio controls><source src = "output_data/Track00012mix_files/pipeline2/p2_mc_Track00012mix.wav" type="audio/wav"></audio>
+            
             <h5>Pipeline #3</h5>
-            <audio controls autoplay>
-                <source src = "output_data/sounds/sample.wav" type="audio/wav">
-            </audio>
+            <audio controls><source src = "output_data/Track00012mix_files/pipeline3/p3_mc_Track00012mix.wav" type="audio/wav"></audio>
+            
             <h5>Pipeline #4</h5>
-            <audio controls autoplay>
-                <source src = "output_data/sounds/sample.wav" type="audio/wav">
-            </audio>
+            <audio controls><source src = "output_data/Track00012mix_files/pipeline4/p4_mc_Track00012mix.wav" type="audio/wav"></audio>
+            
             <h5>Pipeline #5</h5>
-            <audio controls autoplay>
-                <source src = "output_data/sounds/sample.wav" type="audio/wav">
-            </audio>
+            <audio controls><source src = "output_data/Track00012mix_files/pipeline5/p5_mc_Track00012mix.wav" type="audio/wav"></audio>
         </div>
 
         <div class="section">
@@ -521,9 +431,13 @@
             </p>
         </div>
 
-        <!-- Include Bootstrap JS and Popper.js -->
+        <div class="bottom-bar">
+            <h1> Beats to Blocks - By Peter Akdemir, Dustin La, Joshua Quizon, Rahul Shah </h1>
+        </div>
+
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
     </body>
 </html>
