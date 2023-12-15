@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
-
+nav {
+    z-index: 100; /* Place the blurred layer behind other content */
+}
 .background {
     position: fixed;
     top: 0;
@@ -38,6 +40,18 @@ body {
     justify-content: center;
 }
 
+/* Apply specific styles to the navbar */
+#myNavbar {
+    background-color: #141915; /* Customize as needed */
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+#myNavbar a {
+    color: #2C5E3B; /* Customize as needed */
+    margin-right: 30px;
+}
 
 .title {
     color: white; 
