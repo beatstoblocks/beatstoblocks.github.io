@@ -126,30 +126,6 @@ h5 {
     height: 35px; /* Adjust the height as needed */
 }
 
-::-webkit-scrollbar {
-    width: 12px; /* Adjust the width as needed */
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Adjust the color on hover */
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #333; /* Adjust the color */
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: #222; /* Adjust the color */
-}
-
-/* Handle on active */
-::-webkit-scrollbar-thumb:active {
-    background: #666; /* Adjust the color on active state */
-}
-
 
 /* Responsive Styles */
 @media screen and (max-width: 600px) {
