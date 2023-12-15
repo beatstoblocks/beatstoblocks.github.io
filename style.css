@@ -50,7 +50,7 @@ body {
 
 #myNavbar a {
     color: #2C5E3B; /* Customize as needed */
-    margin-right: 30px;
+    margin-right: 10px;
 }
 
 .title {
@@ -100,7 +100,7 @@ h5 {
 }
 
 
-.section {
+section {
     width: 90%; 
     max-width: 1000px;
     text-align: left;
@@ -111,10 +111,11 @@ h5 {
     z-index: 2;
     background-color: white;
     font-size: 1em;
+    scroll-margin-top: 80px;
 }
 
 .pipeline {
-    margin-bottom: 10px;
+    scroll-margin-top: 70px;
 }
 
 .bottom-bar {
@@ -162,7 +163,9 @@ h5 {
         font-size: 1em;
     }
 }
-
+.hover-light:hover {
+    color: red; /* Change to the desired light color on hover */
+}
 @media screen and (max-width: 400px) {
     .title h1 {
         font-size: 2em;

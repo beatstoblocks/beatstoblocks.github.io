@@ -13,13 +13,19 @@
 <body>
     <nav class="navbar navbar-expand-lg sticky-top" id="myNavbar">
         <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#Overview">Overview</a>
+                        <a class="nav-link hover-light" href="#Overview">Overview</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#Motivation">Motvation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#What-is-NB?">What's a Minecraft Note Block?</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#Models">Models</a>
@@ -77,7 +83,7 @@
     </div>
 
 
-    <div class="section" id="Overview">
+    <section id="Overview">
         <h2>Overview</h2>
         <p>Given any song in a .wav file format, split the song into its
             unique stems and convert it to MIDI format. Using the MIDI
@@ -88,9 +94,9 @@
             to identify notes manually and creating a MIDI file for
             the song or creating within Minecraft itself.
         </p>
-    </div>
+    </section>
 
-    <div class="section" id="Motivation">
+    <section id="Motivation">
         <h2>Motivation</h2>
         <p>There are many covers of existing songs that are made using
             Minecraft note blocks, however the process of converting
@@ -102,9 +108,21 @@
             can be used to create more noteblock covers for existing
             songs, the main motivation behind it is the interesting and
             “cool” aspect of audio transcription.</p>
-    </div>
+    </section>
 
-    <div class="section" id="Models">
+    <section id="What-is-NB?">
+        <h2>What is a Minecraft Note Block?</h2>
+        <p>Minecraft note blocks are interactive blocks in Minecraft which allow players to produce a range of musical
+            notes on different instruments. Each block can be tuned to a specific note by right-clicking, which cycles
+            through a set of pitches. Different instruments can be mimicked depending on the block type placed beneath
+            the note block. For instance, a block placed on top of sand will produce a snare drum sound, while one atop
+            wood simulates a bass guitar. This functionality enables the creation of elaborate musical sequences within
+            the game, which we attempt to automate in this project using various stem splitters, MIDI transcriptors, and
+            the OpenNBS library in Python.
+        </p>
+    </section>
+
+    <section id="Models">
         <h2>Machine Listening Models</h2>
         <h3>Spleeter</h3>
         <p>A music source separation tool that uses pre-trained models.
@@ -144,9 +162,9 @@
             It is important to note that unlike MT3, Basic Pitch only
             estimates notes, not instruments.
         </p>
-    </div>
+    </section>
 
-    <div class="section" id="OpenNBS">
+    <section id="OpenNBS">
         <h2>Open Note Block Studio</h2>
         <p>Open Note Block Studio is a software that allows users to
             create MIDI files and map to Minecraft Note Blocks through
@@ -156,15 +174,15 @@
             we use the nbswave python package transform the nbs file
             into a .wav file.
         </p>
-    </div>
+    </section>
 
-    <div class="section">
+    <section>
         <h2>Pipelines</h2>
-        <h3 id="P1">Pipeline #1 - MT3 Only</h3>
+        <h3 class="pipeline" id="P1">Pipeline #1 - MT3 Only</h3>
         <p>This pipeline only uses the MT3 model.
             It transcribes the original source file and uses it as
             input for MT3.</p>
-        <h3 id="P2">Pipeline #2 - Demucs, Spleeter, MT3</h3>
+        <h3 class="pipeline" id="P2">Pipeline #2 - Demucs, Spleeter, MT3</h3>
         <p>This pipeline uses Demucs to split the track into bass, drums, vocals, and other sounds.
             It then splits the other stems through Spleeter to obtain the piano and other stems separately.
             Finally, it transcribes all of these files through MT3. The specific files chosen for this pipeline are:
@@ -184,7 +202,7 @@
         </ul>
         </p>
 
-        <h3 id="P3">Pipeline #3 - Spleeter and MT3</h3>
+        <h3 class="pipeline" id="P3">Pipeline #3 - Spleeter and MT3</h3>
         <p>This pipeline uses Spleeter to split the track into piano, drums, bass, and other.
             These stems are then transcribed into MIDI using MT3. The specific files chosen for this pipeline are:
         <ul>
@@ -195,7 +213,7 @@
         </ul>
         </p>
 
-        <h3 id="P4">Pipeline #4 - Demucs, Spleeter, Spotify Basic Pitch</h3>
+        <h3 class="pipeline" id="P4">Pipeline #4 - Demucs, Spleeter, Spotify Basic Pitch</h3>
         <p>This pipeline uses Demucs to split the track into bass, drums, vocals, and other sounds.
             It then splits the other stems through Spleeter to obtain the piano and other stems separately.
             Finally, it transcribes all of these files through Spotify Basic Pitch. The specific files chosen for this
@@ -217,7 +235,7 @@
             </li>
         </ul>
 
-        <h3 id="P5">Pipeline #5 - Spleeter and Spotify Basic Pitch</h3>
+        <h3 class="pipeline" id="P5">Pipeline #5 - Spleeter and Spotify Basic Pitch</h3>
         <p>This pipeline uses Spleeter to split the track into piano, drums, bass, and other.
             These stems are then transcribed into MIDI using Spotify Basic Pitch. The specific files chosen for this
             pipeline are:
@@ -228,17 +246,31 @@
             <li>other.mid</li>
         </ul>
         </p>
-    </div>
+    </section>
 
-    <div class="section" id="Dataset">
+    <section id="Dataset">
         <h2>Dataset</h2>
+        <p>In this project, we accessed the performance of each model on all 20 tracks of the BabySlakh dataset. The
+            BabySlakh data set is a subset of Slakh2100 , consisting of first 20 tracks of Slakh2100 (i.e., Track00001
+            through Track00020, inclusive). All of the audio is in the wav format and has a sample rate of 16 kHz. You
+            can find the dataset <a href="https://zenodo.org/records/4603870">here</a>.
+        </p>
+        <p>
+            We used a subset of the Slakh2100 dataset because it was used as one of the datasets for training the MT3
+            model. Additionally, we chose this dataset over other datasets because it had well-formatted annotations for
+            evaluation–they clearly defined the instrument classes that were used and also included the ground truth
+            MIDI transcriptions. The tracks we used from BabySlakh were reduced to the first minute due the extensive
+            run time for splitting and transcribing each stem of each track through our program.
+        </p>
+    </section>
+
+    <section id="Results">
+        <h2>Results</h2>
         <p>Insert info here
         </p>
-    </div>
-    <div class="title" id="Results">
-        <h1>Output and Results</h1>
-    </div>
-    <div class="section">
+    </section>
+
+    <section>
         <h3>Input File</h3>
         <p>This is our input file from the BabySlakh dataset.
             This is the first minute of Track00012 that we will be
@@ -246,9 +278,9 @@
         <audio controls>
             <source src="output_data/Track00012mix_files/Track00012mix.wav" type="audio/wav">
         </audio>
-    </div>
+    </section>
 
-    <div class="section">
+    <section>
         <h3>Demucs Splitting</h3>
         <p>When putting our input file of Track00012
             through Demucs, the following splits of
@@ -274,9 +306,9 @@
         <audio controls>
             <source src="output_data/Track00012mix_files/htdemucs/Track00012mix/other.wav" type="audio/wav">
         </audio>
-    </div>
+    </section>
 
-    <div class="section">
+    <section>
         <h3>Spleeter Splitting</h3>
         <p>When putting our input file of Track00012
             through Spleeter, the following splits of
@@ -307,9 +339,9 @@
         <audio controls>
             <source src="output_data/Track00012mix_files/spleeter/Track00012mix/piano.wav" type="audio/wav">
         </audio>
-    </div>
+    </section>
 
-    <div class="section">
+    <section>
         <h3>Demucs into Spleeter</h3>
         <p>After obtaining the outputs from Demucs,
             to further isolate the piano instrument
@@ -328,9 +360,9 @@
         <audio controls>
             <source src="output_data/Track00012mix_files/demucs_into_spleeter/other/piano.wav" type="audio/wav">
         </audio>
-    </div>
+    </section>
 
-    <div class="section">
+    <section>
         <h3>Spotify Basic Pitch Output</h3>
         <p>After obtaining the split files
             from Demucs, Spleeter, and Demucs
@@ -412,9 +444,9 @@
             src="output_data/Track00012mix_files/demucs_into_spleeter_basicPitch/piano.mid"></midi-visualizer>
         <midi-player src="output_data/Track00012mix_files/demucs_into_spleeter_basicPitch/piano.mid" sound-font
             visualizer="#demucsSpleeterBasicPitchPiano"></midi-player>
-    </div>
+    </section>
 
-    <div class="section">
+    <section>
         <h3>MT3</h3>
         <p>Additionally, these same split files as above are
             transcribed to MIDI using MT3:
@@ -493,9 +525,9 @@
             src="output_data/Track00012mix_files/demucs_into_spleeter_mt3/piano.mid"></midi-visualizer>
         <midi-player src="output_data/Track00012mix_files/demucs_into_spleeter_mt3/piano.mid" sound-font
             visualizer="#demucsSpleetermt3Piano"></midi-player>
-    </div>
+    </section>
 
-    <div class="section">
+    <section>
         <h3>Combining MIDI</h3>
         <p>The following are the above five mentioned Pipelines with the MIDI stem files combined to create each
             pipeline MIDI file:
@@ -532,9 +564,9 @@
         <midi-player src="output_data/Track00012mix_files/pipeline5/pipeline5_combined_midi.mid" sound-font
             visualizer="#pipeline5CombinedMIDI"></midi-player>
 
-    </div>
+    </section>
 
-    <div class="section">
+    <section>
 
         <h3>MIDI to Noteblock Studio (NBS) to Final Audio Outputs</h3>
         <p>The MIDI files are then transcribed to Note Block Studio to be converted into Minecraft Note Blocks using
@@ -566,27 +598,126 @@
         <audio controls>
             <source src="output_data/Track00012mix_files/pipeline5/p5_mc_Track00012mix.wav" type="audio/wav">
         </audio>
-    </div>
+    </section>
 
-    <div class="section" id="Evaluation">
+    <section id="Evaluation">
         <h2>Evaluation</h2>
-        <p> Add info here
+        <p>We evaluated the performance of the specific MIDI files chosen for each pipeline in two ways.</p>
+        <p> First we compared frequencies of instrument classes in transcribed MIDI files to those in the ground truth
+            MIDI files on. For predicted MIDIs, we assigned a representative instrument class to the notes whose MIDI
+            program numbers fell within the designated ranges for that particular class. For example, we assign the
+            instrument class of “piano” to notes that have program numbers between 0 and 7, inclusive. Note that this
+            only applies to pipelines that use MT3 (Pipelines #1, #2, and #3) because the pipelines with Spotify Basic
+            Pitch (Pipelines #4 and #5) only transcribes to a singular instrument of piano and does not transcribe to
+            other instrument classes like MT3 does.
         </p>
-    </div>
+        <p>
+            To further evaluate our results quantitatively across all pipelines (Pipelines #1-#5), we measured the note
+            onset, offset, and pitch accuracy of each pipeline. We used metrics including overlap of notes, precision,
+            recall, and f1 score to understand how well each pipeline accomplished each type of detection for the MIDIs
+            it predicted for a Minecraft Note Block cover. Specifically, we evaluated note accuracy based on the
+            following combination of note properties:
+        </p>
+        <ul>
+            <li>Onset, offset, and pitch prediction</li>
+            <li>Onset and pitch prediction</li>
+            <li>Onset prediction</li>
+            <li>Offset prediction</li>
+        </ul>
+        <p>We use the following mir_eval functions to evaluate the above combinations:</p>
+
+        <ul>
+            <li><code>mir_eval.transcription.precision_recall_f1_overlap</code>: for (a, b)</li>
+            <li><code>mir_eval.transcription.onset_precision_recall_f1</code>: for (c)</li>
+            <li><code>mir_eval.transcription.offset_precision_recall_f1</code>: for (d)</li>
+        </ul>
+
+        <p>The following thresholds are defined for evaluation:</p>
+
+        <ul>
+            <li>Onsets: within 0.1 seconds of the true note</li>
+            <li>Offsets: within 20% of the true note, maximum 0.1 ms of the true note</li>
+            <li>Pitch: within 50 cents of the true note</li>
+        </ul>
+
+        <h4>Analysis Figures and Heatmaps</h4>
+
+        <iframe src="https://drive.google.com/file/d/1-3FxOrr4-2imLD-inOazScaFcm495wY_/preview" width="640" height="480" allow="autoplay"></iframe>
+        <p>This bar plot shows frequencies of predicted
+            instruments classes and true instrument classes for MT3. We see that 4 instrument classes - synth effects,
+            percussive, ethnic, and sound effects - were undetected in the predicted transcribed MIDI that MT3
+            generated. Overall, frequencies of predicted instrument classes are close to those that are present in the
+            ground truths, except for the guitar, piano, and string (continued) classes, for which the predicted
+            frequencies were more off than actual frequencies of them.</p>
+            
+            <iframe src="https://drive.google.com/file/d/1-8Q43I4CNMzqvxfGKpuo1QhRWXxTb8CC/preview" width="640" height="480" allow="autoplay"></iframe>
+
+        <p>This bar plot shows frequencies of predicted instruments classes and true instrument classes for Pipeline #2,
+            Demucs and Spleeter transcribed by MT3. As shown in this bar plot, it overestimated the frequencies of all
+            instrument classes from our predictions except bass and synth lead. Tracks of the predicted MIDI also did
+            not detect instruments from four classes, which were percussive, ethnic, synth effects, and sound effects.
+        </p>
+
+        <iframe src="https://drive.google.com/file/d/1-4xAkEQN71YF05--ByqZ592TN4rH8LM8/preview" width="640" height="480" allow="autoplay"></iframe>
+        <p>This bar plot shows frequencies of predicted instruments classes and true instrument classes for pipeline 3,
+            which is Spleeter transcribed by Spotify Basic Pitch. In this bar plot, it has also mostly overestimated the
+            frequencies of all instrument classes. Tracks of the predicted MIDI did not detect instruments from four
+            classes, which were percussive, ethnic, synth effects, and sound effects. These results are similar to
+            Pipeline #2 as they overestimated most of the frequencies and even overestimated more than the previous
+            pipeline.</p>
+
+            <iframe src="https://drive.google.com/file/d/1-Dw2M1DzB6lvkkTRwagbEg9hTRXmPXVz/preview" width="640" height="480" allow="autoplay"></iframe>
+        <p>Onset, Offset, and Pitch: These are evaluation results that consider note offset, onset, and pitch accuracy.
+            Across these 3 properties, Pipeline #1 performed the best in precision, recall, and f1 values. However,
+            Pipelines #4 and #5 (the ones that use Spotify Basic Pitch) had the best overlap performance between the
+            true and prediction notes.</p>
+
+            <iframe src="https://drive.google.com/file/d/1-DZjaF85Ffdmi4r33637v1y1FaJyYm5D/preview" width="640" height="480" allow="autoplay"></iframe>
+        <p>Onset and Pitch: These are the evaluation results considering the onset and pitch accuracies. Overall,
+            Pipeline #1 had the best performance in terms of precision, recall, and f1 values, while Pipeline #5 had the
+            poorest performance. However, Pipeline #5 had the best performance in overlap while Pipeline #1 had the
+            worst performance. This signals the strengths of Basic Pitch and MT3; MT3 performs better in pitch accuracy
+            while Basic Pitch is better at onset detection.</p>
+
+            <iframe src="https://drive.google.com/file/d/1-DOynD6OVESPSy98eZU2YYZ93461KAea/preview" width="640" height="480" allow="autoplay"></iframe>
+        <p>Onset: These are evaluation results considering only note onset prediction performance. In terms of
+            precision, Pipelines #4 and #5 performed the best, but in terms of recall, they performed the worst.
+            Observing the f1 scores, Pipelines #4 and #5 performed the best. Overall, the range of performance scores is
+            quite small.</p>
+
+            <iframe src="https://drive.google.com/file/d/1-ByqlbxbiYfk0olsUxtd2Ce-7dghFkyf/preview" width="640" height="480" allow="autoplay"></iframe>
+        <p>Offset: These are evaluation results that consider only note offset prediction performance. Pipelines that
+            use Basic Pitch for transcription (Pipelines #4 and #5) clearly performed the best.</p>
+
+        <h4>Conclusions</h4>
+        <p>For instrument class predictions (which only apply to Pipelines #1, #2, and #3), the goal of evaluating was
+            to see whether or not stem splitting prior to MT3 transcription helps. As it was observed, MT3 transcription
+            without prior stem splitting led to better instrument class identification. Overall, prior stem splitting
+            led to an overestimation of instrument classes.</p>
+
+        <p>This evaluation was used to calculate the precision, recall, F1-score, and overlap values for each pipeline
+            per comparison criterion of onset, offset, and pitch. Considering all metrics, Pipelines #1, #2, #3
+            performed the best in these observations. In terms of onset and offset accuracy, pipelines that use Spotify
+            Basic Pitch (Pipelines #4 and #5) performed the best.</p>
+
+    </section>
 
 
-    <div class="section" id="Listen-In-Minecraft">
+    <section id="Listen-In-Minecraft">
         <h2>Imported into Minecraft</h2>
         <p> Add info here
         </p>
-    </div>
+    </section>
 
     <div class="bottom-bar">
         <h1>&copy; 2023 Beats to Blocks</h1>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+    <script
+        src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
 </body>
 
 </html>
