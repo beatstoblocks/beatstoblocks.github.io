@@ -59,17 +59,17 @@ body {
 }
 
 #myNavbar a:hover {
-    color: #2C5E3B; /* Customize as needed */
+    color: #39FF14; /* Customize as needed */
 }
 .custom-toggler .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(78,36,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 .custom-toggler.navbar-toggler {
-    border-color: #4e2401;
+    border-color: #141915;
 } 
 
 .dropdown-item:hover {
-    background-color: #4e2401;
+    background-color: #141915;
 }
 .title {
     color: white; 
@@ -176,10 +176,14 @@ section {
     align-items: center;
 }
 
+.centerContent iframe {
+    max-width: 100%; /* Ensure the iframe doesn't expand wider than its container */
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 600px) {
     .title h1 {
-        font-size: 2em;
+        font-size: 2.5em;
     }
 
     .title p {
@@ -198,11 +202,11 @@ section {
     }
 }
 .hover-light:hover {
-    color: red; /* Change to the desired light color on hover */
+    color: white; 
 }
 @media screen and (max-width: 400px) {
     .title h1 {
-        font-size: 2em;
+        font-size: 2.5em;
     }
 
     .title p {
