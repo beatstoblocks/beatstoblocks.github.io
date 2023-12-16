@@ -82,13 +82,13 @@
         <img src="assets/minecraft-background.jpg" alt="Background Image" class="background-image">
     </div>
 
-    <div class="title">
+    <div class="title" id="Overview">
         <h1>Beats to Blocks</h1>
         <p><strong>By Peter Akdemir, Dustin La, Joshua Quizon, Rahul Shah</strong></p>
     </div>
 
 
-    <section id="Overview">
+    <section>
         <h2>Overview</h2>
         <p>Given any song in a .wav file format, split the song into its
             unique stems and convert it to MIDI format. Using the MIDI
@@ -124,7 +124,7 @@
             the game, which we attempt to automate in this project using various stem splitters, MIDI transcriptors, and
             the OpenNBS library in Python. See below for the different sounds a note block can make:
         </p>
-        <div class = "video">
+        <div class = "centerContent">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/ZwL3_fewrg8?si=0DVaHoDapyy_KrGq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </section>
@@ -639,8 +639,10 @@
 
         <h4>Analysis Figures and Heatmaps</h4>
 
-        <iframe src="https://drive.google.com/file/d/1-3FxOrr4-2imLD-inOazScaFcm495wY_/preview" width="640" height="480"
-            allow="autoplay"></iframe>
+        <div class="centerContent">
+            <iframe src="https://drive.google.com/file/d/1-3FxOrr4-2imLD-inOazScaFcm495wY_/preview" width="640" height="480"
+                allow="autoplay"></iframe>
+        </div>
         <p>This bar plot shows frequencies of predicted
             instruments classes and true instrument classes for MT3. We see that 4 instrument classes - synth effects,
             percussive, ethnic, and sound effects - were undetected in the predicted transcribed MIDI that MT3
@@ -648,48 +650,59 @@
             ground truths, except for the guitar, piano, and string (continued) classes, for which the predicted
             frequencies were more off than actual frequencies of them.</p>
 
-        <iframe src="https://drive.google.com/file/d/1-8Q43I4CNMzqvxfGKpuo1QhRWXxTb8CC/preview" width="640" height="480"
-            allow="autoplay"></iframe>
-
+        <div class="centerContent">
+            <iframe src="https://drive.google.com/file/d/1-8Q43I4CNMzqvxfGKpuo1QhRWXxTb8CC/preview" width="640" height="480"
+                allow="autoplay"></iframe>
+        </div>
         <p>This bar plot shows frequencies of predicted instruments classes and true instrument classes for Pipeline #2,
             Demucs and Spleeter transcribed by MT3. As shown in this bar plot, it overestimated the frequencies of all
             instrument classes from our predictions except bass and synth lead. Tracks of the predicted MIDI also did
             not detect instruments from four classes, which were percussive, ethnic, synth effects, and sound effects.
         </p>
 
-        <iframe src="https://drive.google.com/file/d/1-4xAkEQN71YF05--ByqZ592TN4rH8LM8/preview" width="640" height="480"
-            allow="autoplay"></iframe>
+        <div class="centerContent">
+            <iframe src="https://drive.google.com/file/d/1-4xAkEQN71YF05--ByqZ592TN4rH8LM8/preview" width="640" height="480"
+                allow="autoplay"></iframe>
+        </div>
         <p>This bar plot shows frequencies of predicted instruments classes and true instrument classes for pipeline 3,
             which is Spleeter transcribed by Spotify Basic Pitch. In this bar plot, it has also mostly overestimated the
             frequencies of all instrument classes. Tracks of the predicted MIDI did not detect instruments from four
             classes, which were percussive, ethnic, synth effects, and sound effects. These results are similar to
             Pipeline #2 as they overestimated most of the frequencies and even overestimated more than the previous
             pipeline.</p>
-
-        <iframe src="https://drive.google.com/file/d/1-Dw2M1DzB6lvkkTRwagbEg9hTRXmPXVz/preview" width="640" height="480"
-            allow="autoplay"></iframe>
+        
+        <div class="centerContent">
+            <iframe src="https://drive.google.com/file/d/1-Dw2M1DzB6lvkkTRwagbEg9hTRXmPXVz/preview" width="640" height="480"
+                allow="autoplay"></iframe>
+        </div>
         <p>Onset, Offset, and Pitch: These are evaluation results that consider note offset, onset, and pitch accuracy.
             Across these 3 properties, Pipeline #1 performed the best in precision, recall, and f1 values. However,
             Pipelines #4 and #5 (the ones that use Spotify Basic Pitch) had the best overlap performance between the
             true and prediction notes.</p>
-
-        <iframe src="https://drive.google.com/file/d/1-DZjaF85Ffdmi4r33637v1y1FaJyYm5D/preview" width="640" height="480"
-            allow="autoplay"></iframe>
+        
+        <div class="centerContent">
+            <iframe src="https://drive.google.com/file/d/1-DZjaF85Ffdmi4r33637v1y1FaJyYm5D/preview" width="640" height="480"
+                allow="autoplay"></iframe>
+        </div>
         <p>Onset and Pitch: These are the evaluation results considering the onset and pitch accuracies. Overall,
             Pipeline #1 had the best performance in terms of precision, recall, and f1 values, while Pipeline #5 had the
             poorest performance. However, Pipeline #5 had the best performance in overlap while Pipeline #1 had the
             worst performance. This signals the strengths of Basic Pitch and MT3; MT3 performs better in pitch accuracy
             while Basic Pitch is better at onset detection.</p>
 
-        <iframe src="https://drive.google.com/file/d/1-DOynD6OVESPSy98eZU2YYZ93461KAea/preview" width="640" height="480"
-            allow="autoplay"></iframe>
+        <div class="centerContent">
+            <iframe src="https://drive.google.com/file/d/1-DOynD6OVESPSy98eZU2YYZ93461KAea/preview" width="640" height="480"
+                allow="autoplay"></iframe>
+        </div>
         <p>Onset: These are evaluation results considering only note onset prediction performance. In terms of
             precision, Pipelines #4 and #5 performed the best, but in terms of recall, they performed the worst.
             Observing the f1 scores, Pipelines #4 and #5 performed the best. Overall, the range of performance scores is
             quite small.</p>
 
-        <iframe src="https://drive.google.com/file/d/1-ByqlbxbiYfk0olsUxtd2Ce-7dghFkyf/preview" width="640" height="480"
-            allow="autoplay"></iframe>
+        <div class="centerContent">
+            <iframe src="https://drive.google.com/file/d/1-ByqlbxbiYfk0olsUxtd2Ce-7dghFkyf/preview" width="640" height="480"
+                allow="autoplay"></iframe>
+        </div>
         <p>Offset: These are evaluation results that consider only note offset prediction performance. Pipelines that
             use Basic Pitch for transcription (Pipelines #4 and #5) clearly performed the best.</p>
 
@@ -713,7 +726,7 @@
             into a Minecraft schematic. This schematic can then be placed into a world in Minecraft and be played within the game. Seen below
             is Track00001 of our dataset using Pipeline #1 in Minecraft using the actual note blocks:
         </p>
-        <div class = "video">
+        <div class = "centerContent">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/bRbF6phE7Fo?si=081Jt7bC0pbL1eZf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </section>
