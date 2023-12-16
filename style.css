@@ -48,11 +48,29 @@ body {
     top: 0;
 }
 
+.dropdown-menu
+{
+    background-color: black;
+}
+
 #myNavbar a {
-    color: #2C5E3B; /* Customize as needed */
+    color: silver;
     margin-right: 10px;
 }
 
+#myNavbar a:hover {
+    color: #2C5E3B; /* Customize as needed */
+}
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(78,36,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.custom-toggler.navbar-toggler {
+    border-color: #4e2401;
+} 
+
+.dropdown-item:hover {
+    background-color: #4e2401;
+}
 .title {
     color: white; 
     z-index: 2;

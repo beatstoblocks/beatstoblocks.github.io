@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-expand-lg sticky-top" id="myNavbar">
         <div class="container-fluid">
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -22,7 +22,7 @@
                         <a class="nav-link hover-light" href="#Overview">Overview</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#Motivation">Motvation</a>
+                        <a class="nav-link" href="#Motivation">Motivation</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#What-is-NB?">What's a Minecraft Note Block?</a>
@@ -51,19 +51,24 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#Dataset">Dataset</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Results">Results</a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Evaluation
+                            Results
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Comparing Predicted and True Instrument Class
-                                    Frequencies</a></li>
-                            <li><a class="dropdown-item" href="#">Using mir_eval</a></li>
+                            <li><a class="dropdown-item" href="#Demucs_Splitting">Demucs Splitting</a></li>
+                            <li><a class="dropdown-item" href="#Spleeter_Splitting">Spleeter Splitting</a></li>
+                            <li><a class="dropdown-item" href="#Demucs-into_Spleeter">Demucs Into Spleeter</a></li>
+                            <li><a class="dropdown-item" href="#Spotify_Basic_Pitch_Output">Spotify Basic Pitch
+                                Output</a></li>
+                            <li><a class="dropdown-item" href="#MT3_output">MT3 Output</a></li>
+                            <li><a class="dropdown-item" href="#Combining_MIDI">Combining MIDIs</a></li>
+                            <li><a class="dropdown-item" href="#NBS_output">NBS Output</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Evaluation">Evaluation</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#Listen-In-Minecraft">Listen In Minecraft!</a>
@@ -264,12 +269,6 @@
         </p>
     </section>
 
-    <section id="Results">
-        <h2>Results</h2>
-        <p>Insert info here
-        </p>
-    </section>
-
     <section>
         <h3>Input File</h3>
         <p>This is our input file from the BabySlakh dataset.
@@ -280,7 +279,7 @@
         </audio>
     </section>
 
-    <section>
+    <section id="Demucs_Splitting">
         <h3>Demucs Splitting</h3>
         <p>When putting our input file of Track00012
             through Demucs, the following splits of
@@ -308,7 +307,7 @@
         </audio>
     </section>
 
-    <section>
+    <section id="Spleeter_Splitting">
         <h3>Spleeter Splitting</h3>
         <p>When putting our input file of Track00012
             through Spleeter, the following splits of
@@ -341,7 +340,7 @@
         </audio>
     </section>
 
-    <section>
+    <section id="Demucs-into_Spleeter">
         <h3>Demucs into Spleeter</h3>
         <p>After obtaining the outputs from Demucs,
             to further isolate the piano instrument
@@ -362,7 +361,7 @@
         </audio>
     </section>
 
-    <section>
+    <section id="Spotify_Basic_Pitch_Output">
         <h3>Spotify Basic Pitch Output</h3>
         <p>After obtaining the split files
             from Demucs, Spleeter, and Demucs
@@ -446,7 +445,7 @@
             visualizer="#demucsSpleeterBasicPitchPiano"></midi-player>
     </section>
 
-    <section>
+    <section id="MT3_output">
         <h3>MT3</h3>
         <p>Additionally, these same split files as above are
             transcribed to MIDI using MT3:
@@ -527,7 +526,7 @@
             visualizer="#demucsSpleetermt3Piano"></midi-player>
     </section>
 
-    <section>
+    <section id="Combining_MIDI">
         <h3>Combining MIDI</h3>
         <p>The following are the above five mentioned Pipelines with the MIDI stem files combined to create each
             pipeline MIDI file:
@@ -566,7 +565,7 @@
 
     </section>
 
-    <section>
+    <section id="NBS_output">
 
         <h3>MIDI to Noteblock Studio (NBS) to Final Audio Outputs</h3>
         <p>The MIDI files are then transcribed to Note Block Studio to be converted into Minecraft Note Blocks using
@@ -642,15 +641,17 @@
 
         <h4>Analysis Figures and Heatmaps</h4>
 
-        <iframe src="https://drive.google.com/file/d/1-3FxOrr4-2imLD-inOazScaFcm495wY_/preview" width="640" height="480" allow="autoplay"></iframe>
+        <iframe src="https://drive.google.com/file/d/1-3FxOrr4-2imLD-inOazScaFcm495wY_/preview" width="640" height="480"
+            allow="autoplay"></iframe>
         <p>This bar plot shows frequencies of predicted
             instruments classes and true instrument classes for MT3. We see that 4 instrument classes - synth effects,
             percussive, ethnic, and sound effects - were undetected in the predicted transcribed MIDI that MT3
             generated. Overall, frequencies of predicted instrument classes are close to those that are present in the
             ground truths, except for the guitar, piano, and string (continued) classes, for which the predicted
             frequencies were more off than actual frequencies of them.</p>
-            
-            <iframe src="https://drive.google.com/file/d/1-8Q43I4CNMzqvxfGKpuo1QhRWXxTb8CC/preview" width="640" height="480" allow="autoplay"></iframe>
+
+        <iframe src="https://drive.google.com/file/d/1-8Q43I4CNMzqvxfGKpuo1QhRWXxTb8CC/preview" width="640" height="480"
+            allow="autoplay"></iframe>
 
         <p>This bar plot shows frequencies of predicted instruments classes and true instrument classes for Pipeline #2,
             Demucs and Spleeter transcribed by MT3. As shown in this bar plot, it overestimated the frequencies of all
@@ -658,7 +659,8 @@
             not detect instruments from four classes, which were percussive, ethnic, synth effects, and sound effects.
         </p>
 
-        <iframe src="https://drive.google.com/file/d/1-4xAkEQN71YF05--ByqZ592TN4rH8LM8/preview" width="640" height="480" allow="autoplay"></iframe>
+        <iframe src="https://drive.google.com/file/d/1-4xAkEQN71YF05--ByqZ592TN4rH8LM8/preview" width="640" height="480"
+            allow="autoplay"></iframe>
         <p>This bar plot shows frequencies of predicted instruments classes and true instrument classes for pipeline 3,
             which is Spleeter transcribed by Spotify Basic Pitch. In this bar plot, it has also mostly overestimated the
             frequencies of all instrument classes. Tracks of the predicted MIDI did not detect instruments from four
@@ -666,26 +668,30 @@
             Pipeline #2 as they overestimated most of the frequencies and even overestimated more than the previous
             pipeline.</p>
 
-            <iframe src="https://drive.google.com/file/d/1-Dw2M1DzB6lvkkTRwagbEg9hTRXmPXVz/preview" width="640" height="480" allow="autoplay"></iframe>
+        <iframe src="https://drive.google.com/file/d/1-Dw2M1DzB6lvkkTRwagbEg9hTRXmPXVz/preview" width="640" height="480"
+            allow="autoplay"></iframe>
         <p>Onset, Offset, and Pitch: These are evaluation results that consider note offset, onset, and pitch accuracy.
             Across these 3 properties, Pipeline #1 performed the best in precision, recall, and f1 values. However,
             Pipelines #4 and #5 (the ones that use Spotify Basic Pitch) had the best overlap performance between the
             true and prediction notes.</p>
 
-            <iframe src="https://drive.google.com/file/d/1-DZjaF85Ffdmi4r33637v1y1FaJyYm5D/preview" width="640" height="480" allow="autoplay"></iframe>
+        <iframe src="https://drive.google.com/file/d/1-DZjaF85Ffdmi4r33637v1y1FaJyYm5D/preview" width="640" height="480"
+            allow="autoplay"></iframe>
         <p>Onset and Pitch: These are the evaluation results considering the onset and pitch accuracies. Overall,
             Pipeline #1 had the best performance in terms of precision, recall, and f1 values, while Pipeline #5 had the
             poorest performance. However, Pipeline #5 had the best performance in overlap while Pipeline #1 had the
             worst performance. This signals the strengths of Basic Pitch and MT3; MT3 performs better in pitch accuracy
             while Basic Pitch is better at onset detection.</p>
 
-            <iframe src="https://drive.google.com/file/d/1-DOynD6OVESPSy98eZU2YYZ93461KAea/preview" width="640" height="480" allow="autoplay"></iframe>
+        <iframe src="https://drive.google.com/file/d/1-DOynD6OVESPSy98eZU2YYZ93461KAea/preview" width="640" height="480"
+            allow="autoplay"></iframe>
         <p>Onset: These are evaluation results considering only note onset prediction performance. In terms of
             precision, Pipelines #4 and #5 performed the best, but in terms of recall, they performed the worst.
             Observing the f1 scores, Pipelines #4 and #5 performed the best. Overall, the range of performance scores is
             quite small.</p>
 
-            <iframe src="https://drive.google.com/file/d/1-ByqlbxbiYfk0olsUxtd2Ce-7dghFkyf/preview" width="640" height="480" allow="autoplay"></iframe>
+        <iframe src="https://drive.google.com/file/d/1-ByqlbxbiYfk0olsUxtd2Ce-7dghFkyf/preview" width="640" height="480"
+            allow="autoplay"></iframe>
         <p>Offset: These are evaluation results that consider only note offset prediction performance. Pipelines that
             use Basic Pitch for transcription (Pipelines #4 and #5) clearly performed the best.</p>
 
