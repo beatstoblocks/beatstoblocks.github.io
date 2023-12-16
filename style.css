@@ -115,8 +115,8 @@ h1, h2 {
 
 h5 {
     font-size: 1em;
+    margin-top: 3%;
 }
-
 
 section {
     width: 90%; 
@@ -157,6 +157,8 @@ section {
 
 .spacer {
     height: 35px; /* Adjust the height as needed */
+    margin-top: 35px;
+    border-top: 8px solid #2C5E3B;
 }
 
 .video {
