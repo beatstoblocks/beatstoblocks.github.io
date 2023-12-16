@@ -76,8 +76,17 @@
                             <li><a class="dropdown-item" href="#NBS_output">NBS Output</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Evaluation">Evaluation</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Evaluation
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#method1">Evaluation Method #1</a></li>
+                            <li><a class="dropdown-item" href="#method2">Evaluation Method #2</a></li>
+                            <li><a class="dropdown-item" href="#Figures">Analysis Figures and Heatmaps</a></li>
+                            <li><a class="dropdown-item" href="#conclusion">Conclusion</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#Listen-In-Minecraft">Listen In Minecraft!</a>
@@ -291,6 +300,11 @@
             MIDI transcriptions. The tracks we used from BabySlakh were reduced to the first minute due the extensive
             run time for splitting and transcribing each stem of each track through our program.
         </p>
+    </section>
+
+    <section id="Results">
+        <h3>Results</h3>
+        <p>Insert info here</p>
     </section>
 
     <section>
@@ -623,7 +637,7 @@
     <section id="Evaluation">
         <h2>Evaluation</h2>
         <p>We evaluated the performance of the specific MIDI files chosen for each pipeline in two ways.</p>
-        <p> First we compared frequencies of instrument classes in transcribed MIDI files to those in the ground truth
+        <p id="method1"> First we compared frequencies of instrument classes in transcribed MIDI files to those in the ground truth
             MIDI files on. For predicted MIDIs, we assigned a representative instrument class to the notes whose MIDI
             program numbers fell within the designated ranges for that particular class. For example, we assign the
             instrument class of “piano” to notes that have program numbers between 0 and 7, inclusive. Note that this
@@ -631,7 +645,7 @@
             Pitch (Pipelines #4 and #5) only transcribes to a singular instrument of piano and does not transcribe to
             other instrument classes like MT3 does.
         </p>
-        <p>
+        <p id="method2">
             To further evaluate our results quantitatively across all pipelines (Pipelines #1-#5), we measured the note
             onset, offset, and pitch accuracy of each pipeline. We used metrics including overlap of notes, precision,
             recall, and f1 score to understand how well each pipeline accomplished each type of detection for the MIDIs
@@ -660,7 +674,7 @@
             <li>Pitch: within 50 cents of the true note</li>
         </ul>
 
-        <h4>Analysis Figures and Heatmaps</h4>
+        <h4 id="Figures">Analysis Figures and Heatmaps</h4>
 
         <div class="centerContent">
             <iframe src="https://drive.google.com/file/d/1-3FxOrr4-2imLD-inOazScaFcm495wY_/preview" width="640" height="480"
@@ -729,7 +743,7 @@
         <p>Offset: These are evaluation results that consider only note offset prediction performance. Pipelines that
             use Basic Pitch for transcription (Pipelines #4 and #5) clearly performed the best.</p>
 
-        <h4>Conclusions</h4>
+        <h4 id="conclusion">Conclusion</h4>
         <p>For instrument class predictions (which only apply to Pipelines #1, #2, and #3), the goal of evaluating was
             to see whether or not stem splitting prior to MT3 transcription helps. As it was observed, MT3 transcription
             without prior stem splitting led to better instrument class identification. Overall, prior stem splitting

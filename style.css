@@ -59,7 +59,7 @@ body {
 
 #myNavbar a {
     color: silver;
-    margin-right: 10px;
+    margin-right: 9px;
 }
 
 #myNavbar a:hover {
@@ -108,6 +108,14 @@ body {
 
 #Home {
     scroll-margin-top: 100px;
+}
+
+#Figures, #method2, #conclusion {
+    scroll-margin-top: 100px;
+}
+
+#method1{
+    scroll-margin-top: 200px;
 }
 
 h1 {
