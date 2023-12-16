@@ -19,6 +19,9 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <ul class="navbar-nav">
                     <li class="nav-item">
+                        <a class="nav-link hover-light" href="#Home">Home</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link hover-light" href="#Overview">Overview</a>
                     </li>
                     <li class="nav-item">
@@ -32,6 +35,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#OpenNBS">OpenNBS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Approach">Approach</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -82,33 +88,38 @@
         <img src="assets/minecraft-background.jpg" alt="Background Image" class="background-image">
     </div>
 
-    <div class="title" id="Overview">
+    <div class="title" id="Home">
         <h1>Beats to Blocks</h1>
-        <p><strong>By Peter Akdemir, Dustin La, Joshua Quizon, Rahul Shah</strong></p>
+        <p><strong>Peter Akdemir (pja4@njit.edu), Dustin La (drl3@njit.edu), Joshua Quizon (jbq2@njit.edu), Rahul Shah (rns22@njit.edu)</strong></p>
+        <div class = "classInfo">
+            <p>CS 485 - Machine Listening</p>
+            <p>New Jersey Institute of Technology</p>
+            <p>Dr. Mark Cartwright</p>
+        </div>
     </div>
 
 
-    <section>
+    <section id="Overview">
         <h2>Overview</h2>
         <p>Given any song in a .wav file format, split the song into its
             unique stems and convert it to MIDI format. Using the MIDI
-            file, create a Minecraft Note Block cover (audio only) using
+            file, create a Minecraft Note Block cover using
             the same or similar instruments used within the original song.
             This program will allow any song to be converted into a
             Minecraft Note Block cover automatically without needing
             to identify notes manually and creating a MIDI file for
-            the song or creating within Minecraft itself.
+            the song or creating fully within Minecraft itself.
         </p>
     </section>
 
     <section id="Motivation">
         <h2>Motivation</h2>
         <p>There are many covers of existing songs that are made using
-            Minecraft note blocks, however the process of converting
-            these songs to note block format is obscure.
+            Minecraft Note Blocks, however the process of converting
+            these songs to Note Block format is obscure.
             This project aims to automate the transcription
             process using a model to transform a song to MIDI format,
-            and MIDI format to a set of Minecraft note blocks.
+            and MIDI format to a set of Minecraft Note blocks.
             While the production level version of this project
             can be used to create more noteblock covers for existing
             songs, the main motivation behind it is the interesting and
@@ -117,12 +128,12 @@
 
     <section id="What-is-NB?">
         <h2>What is a Minecraft Note Block?</h2>
-        <p>Minecraft note blocks are interactive blocks in Minecraft which allow players to produce a range of musical
+        <p>Minecraft Note Blocks are interactive blocks in Minecraft which allow players to produce a range of musical
             notes on different instruments. Each block can be tuned to a specific note by right-clicking, which cycles
             through a set of pitches. Different instruments can be mimicked depending on the block type placed beneath
-            the note block. This functionality enables the creation of elaborate musical sequences within
+            the Note Block. This functionality enables the creation of elaborate musical sequences within
             the game, which we attempt to automate in this project using various stem splitters, MIDI transcriptors, and
-            the OpenNBS library in Python. See below for the different sounds a note block can make:
+            the OpenNBS library in Python. See below for the different sounds a Note Block can make:
         </p>
         <div class = "centerContent">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/ZwL3_fewrg8?si=0DVaHoDapyy_KrGq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -182,8 +193,19 @@
         </p>
     </section>
 
+    <section id="Approach">
+        <h2>Approach</h2>
+        <p>Using the input .wav file, we will be using combinations of Demucs and Spleeter to split
+            the stems of the song and then transcribe using MT3 or Spotify Basic Pitch. Once we have each
+            combination of Demucs and Spleeter transcribed using MT3 or Spotify Basic Pitch, we will combine
+            specific MIDI files to then be transcribed into Minecraft Note Blocks using the OpenNBS and nbswave python packages
+            to produce a NBS file and final audio output wav file that represents the Minecraft Note Block cover.
+        </p>
+    </section>
+
     <section>
         <h2>Pipelines</h2>
+        <p> These pipelines represent our combinations of Demucs, Spleeter, MT3, and Spotify Basic Pitch.</p>
         <h3 class="pipeline" id="P1">Pipeline #1 - MT3 Only</h3>
         <p>This pipeline only uses the MT3 model.
             It transcribes the original source file and uses it as
@@ -719,12 +741,11 @@
 
     </section>
 
-
     <section id="Listen-In-Minecraft">
         <h2>Listen in Minecraft!</h2>
-        <p> By taking the nbs file that was created through our pipelines, we can import this file into Open Note Block Studio and convert it 
+        <p> By taking the NBS file that was created through our pipelines, we can import this file into Open Note Block Studio and convert it 
             into a Minecraft schematic. This schematic can then be placed into a world in Minecraft and be played within the game. Seen below
-            is Track00001 of our dataset using Pipeline #1 in Minecraft using the actual note blocks:
+            is Track00001 of our dataset using Pipeline #1 in Minecraft using the actual Note Blocks:
         </p>
         <div class = "centerContent">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/bRbF6phE7Fo?si=081Jt7bC0pbL1eZf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
