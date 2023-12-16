@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
-
+nav {
+    z-index: 100; /* Place the blurred layer behind other content */
+}
 .background {
     position: fixed;
     top: 0;
@@ -38,7 +40,37 @@ body {
     justify-content: center;
 }
 
+/* Apply specific styles to the navbar */
+#myNavbar {
+    background-color: #141915; /* Customize as needed */
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
 
+.dropdown-menu
+{
+    background-color: black;
+}
+
+#myNavbar a {
+    color: silver;
+    margin-right: 10px;
+}
+
+#myNavbar a:hover {
+    color: #2C5E3B; /* Customize as needed */
+}
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(78,36,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.custom-toggler.navbar-toggler {
+    border-color: #4e2401;
+} 
+
+.dropdown-item:hover {
+    background-color: #4e2401;
+}
 .title {
     color: white; 
     z-index: 2;
@@ -86,7 +118,7 @@ h5 {
 }
 
 
-.section {
+section {
     width: 90%; 
     max-width: 1000px;
     text-align: left;
@@ -97,10 +129,11 @@ h5 {
     z-index: 2;
     background-color: white;
     font-size: 1em;
+    scroll-margin-top: 80px;
 }
 
 .pipeline {
-    margin-bottom: 10px;
+    scroll-margin-top: 70px;
 }
 
 .bottom-bar {
@@ -148,7 +181,9 @@ h5 {
         font-size: 1em;
     }
 }
-
+.hover-light:hover {
+    color: red; /* Change to the desired light color on hover */
+}
 @media screen and (max-width: 400px) {
     .title h1 {
         font-size: 2em;
