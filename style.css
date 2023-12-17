@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap');
+html {
+    scroll-behavior: smooth;
+}
+
 nav {
     z-index: 100; /* Place the blurred layer behind other content */
 }
@@ -55,21 +59,21 @@ body {
 
 #myNavbar a {
     color: silver;
-    margin-right: 10px;
+    margin-right: 1px;
 }
 
 #myNavbar a:hover {
-    color: #2C5E3B; /* Customize as needed */
+    color: #39FF14; /* Customize as needed */
 }
 .custom-toggler .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(78,36,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 .custom-toggler.navbar-toggler {
-    border-color: #4e2401;
+    border-color: #141915;
 } 
 
 .dropdown-item:hover {
-    background-color: #4e2401;
+    background-color: #141915;
 }
 .title {
     color: white; 
@@ -78,6 +82,7 @@ body {
 
 .title h1 {
     color: white;
+    margin-top: 25px;
     font-size: 5em;
     text-shadow:
     -1px -1px 0 #000,
@@ -88,15 +93,39 @@ body {
 
 .title p {
     font-weight:  300;
-    font-size: 2em;
+    font-size: 1.5em;
     color: white;
     text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
     -1px 1px 0 #000,
-    1px 1px 0 #000;  
-
+    1px 1px 0 #000;
 }
+
+.classInfo {
+    text-align: center;
+}
+
+#Home {
+    scroll-margin-top: 100px;
+}
+
+#Figures, #conclusion {
+    scroll-margin-top: 100px;
+}
+
+#method1, #method2 {
+    scroll-margin-top: 75x;
+}
+
+#Barplots {
+    scroll-margin-top: 100px;
+}
+
+#conclusion {
+    scroll-margin-top: 80px;
+}
+
 h1 {
     color: #000000;
 }
@@ -115,8 +144,8 @@ h1, h2 {
 
 h5 {
     font-size: 1em;
+    margin-top: 3%;
 }
-
 
 section {
     width: 90%; 
@@ -157,18 +186,24 @@ section {
 
 .spacer {
     height: 35px; /* Adjust the height as needed */
+    margin-top: 35px;
+    border-top: 8px solid #2C5E3B;
 }
 
-.video {
+.centerContent {
     text-align: center;
     justify-content: center;
     align-items: center;
 }
 
+.centerContent iframe {
+    max-width: 100%; /* Ensure the iframe doesn't expand wider than its container */
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 600px) {
     .title h1 {
-        font-size: 2em;
+        font-size: 2.5em;
     }
 
     .title p {
@@ -187,11 +222,11 @@ section {
     }
 }
 .hover-light:hover {
-    color: red; /* Change to the desired light color on hover */
+    color: white; 
 }
 @media screen and (max-width: 400px) {
     .title h1 {
-        font-size: 2em;
+        font-size: 2.5em;
     }
 
     .title p {

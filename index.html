@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Beats to Blocks by Peter Akdemir, Dustin La, Joshua Quizon, Rahul Shah">
+    <meta property="og:image" content="https://imgur.com/vx9kuZg">
     <title>Beats to Blocks</title>
+    <link rel="icon" href="assets/noteblock.png" type="image/x-icon" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
@@ -19,6 +22,9 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <ul class="navbar-nav">
                     <li class="nav-item">
+                        <a class="nav-link hover-light" href="#Home">Home</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link hover-light" href="#Overview">Overview</a>
                     </li>
                     <li class="nav-item">
@@ -32,6 +38,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#OpenNBS">OpenNBS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Approach">Approach</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -54,21 +63,33 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Results
+                            Outputs and Results
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#outputs_results">Outputs and Results</a></li>
+                            <li><a class="dropdown-item" href="#input_file">Input File</a></li>
                             <li><a class="dropdown-item" href="#Demucs_Splitting">Demucs Splitting</a></li>
                             <li><a class="dropdown-item" href="#Spleeter_Splitting">Spleeter Splitting</a></li>
                             <li><a class="dropdown-item" href="#Demucs-into_Spleeter">Demucs Into Spleeter</a></li>
-                            <li><a class="dropdown-item" href="#Spotify_Basic_Pitch_Output">Spotify Basic Pitch
-                                Output</a></li>
-                            <li><a class="dropdown-item" href="#MT3_output">MT3 Output</a></li>
+                            <li><a class="dropdown-item" href="#Spotify_Basic_Pitch_Output">Spotify Basic Pitch Transcription</a></li>
+                            <li><a class="dropdown-item" href="#MT3_output">MT3 Transcription</a></li>
                             <li><a class="dropdown-item" href="#Combining_MIDI">Combining MIDIs</a></li>
                             <li><a class="dropdown-item" href="#NBS_output">NBS Output</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#Evaluation">Evaluation</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Evaluation
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#Evaluation">Evaluation (Overview)</a></li>
+                            <li><a class="dropdown-item" href="#method1">Evaluation Method #1</a></li>
+                            <li><a class="dropdown-item" href="#method2">Evaluation Method #2</a></li>
+                            <li><a class="dropdown-item" href="#Barplots">Barplots - Eval #1</a></li>
+                            <li><a class="dropdown-item" href="#Heatmaps">Heatmaps - Eval #2</a></li>
+                            <li><a class="dropdown-item" href="#conclusion">Conclusion</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#Listen-In-Minecraft">Listen In Minecraft!</a>
@@ -82,9 +103,14 @@
         <img src="assets/minecraft-background.jpg" alt="Background Image" class="background-image">
     </div>
 
-    <div class="title">
+    <div class="title" id="Home">
         <h1>Beats to Blocks</h1>
-        <p><strong>By Peter Akdemir, Dustin La, Joshua Quizon, Rahul Shah</strong></p>
+        <p><strong>Peter Akdemir (pja4@njit.edu), Dustin La (drl3@njit.edu), Joshua Quizon (jbq2@njit.edu), Rahul Shah (rns22@njit.edu)</strong></p>
+        <div class = "classInfo">
+            <p>CS 485 - Machine Listening</p>
+            <p>New Jersey Institute of Technology</p>
+            <p>Dr. Mark Cartwright</p>
+        </div>
     </div>
 
 
@@ -92,66 +118,65 @@
         <h2>Overview</h2>
         <p>Given any song in a .wav file format, split the song into its
             unique stems and convert it to MIDI format. Using the MIDI
-            file, create a Minecraft Note Block cover (audio only) using
+            file, create a Minecraft Note Block cover using
             the same or similar instruments used within the original song.
             This program will allow any song to be converted into a
             Minecraft Note Block cover automatically without needing
             to identify notes manually and creating a MIDI file for
-            the song or creating within Minecraft itself.
+            the song or creating fully within Minecraft itself.
         </p>
     </section>
 
     <section id="Motivation">
         <h2>Motivation</h2>
         <p>There are many covers of existing songs that are made using
-            Minecraft note blocks, however the process of converting
-            these songs to note block format is obscure.
+            Minecraft Note Blocks. However the process of converting
+            these songs to Note Block format is obscure.
             This project aims to automate the transcription
-            process using a model to transform a song to MIDI format,
-            and MIDI format to a set of Minecraft note blocks.
+            process using machine learning models to split the song's stems, transform into MIDI format,
+            and MIDI format to a set of Minecraft Note blocks.
             While the production level version of this project
             can be used to create more noteblock covers for existing
             songs, the main motivation behind it is the interesting and
-            “cool” aspect of audio transcription.</p>
+            “cool” aspect of audio splitting and transcription.</p>
     </section>
 
     <section id="What-is-NB?">
         <h2>What is a Minecraft Note Block?</h2>
-        <p>Minecraft note blocks are interactive blocks in Minecraft which allow players to produce a range of musical
+        <p>Minecraft Note Blocks are interactive blocks in Minecraft which allow players to produce a range of musical
             notes on different instruments. Each block can be tuned to a specific note by right-clicking, which cycles
             through a set of pitches. Different instruments can be mimicked depending on the block type placed beneath
-            the note block. This functionality enables the creation of elaborate musical sequences within
-            the game, which we attempt to automate in this project using various stem splitters, MIDI transcriptors, and
-            the OpenNBS library in Python. See below for the different sounds a note block can make:
+            the Note Block. This functionality enables the creation of elaborate musical sequences within
+            the game See below for the different sounds a Note Block can make:
         </p>
-        <div class = "video">
+        <div class = "centerContent">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/ZwL3_fewrg8?si=0DVaHoDapyy_KrGq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </section>
     <section id="Models">
-        <h2>Machine Listening Models</h2>
+        <h2>Machine Learning Models</h2>
         <h3>Spleeter</h3>
-        <p>A music source separation tool that uses pre-trained models.
+        <p>A music source separation tool that uses pre-trained models crated by Deezer.
             It takes in a waveform as input, and outputs a 5 splits max:
-            vocals, drums, bass, piano, and other. Research papers state
+            vocals, drums, bass, piano, and other. A paper by <a href="https://doi.org/10.21105/joss.02154">Hennequin</a> states
             that it is one of the best performing 4-stem separation models
             using the musdb18 benchmark.</p>
 
         <h3>Demucs</h3>
         <p>Short for “Deep Extractor for Music Sources,” it is a
-            stem splitting model that takes in a waveform as input.
+            stem splitting model created by Facebook that takes in a waveform as input.
             The output is a 4-way split of bass, drums, vocals, and
             other sounds. Specifically, the version of Demucs being
-            used is an implementation using Transforms, which performs
+            used is an implementation using transformers, which performs
             better by accounting for both long and short music content.
-            In research papers, it has been stated to perform better
+            In a paper by <a href="https://arxiv.org/abs/1909.01174">Défossez</a>, it has been stated to perform better
             source separation for bass and drum splits.</p>
 
         <h3>MT3</h3>
         <p>A music transcription model that takes a waveform as
-            input and transcribes it to a MIDI equivalent.
+            input and transcribes it to a MIDI equivalent created by Google Magenta.
             It performs well in regards to evaluating how accurate
-            its estimations of frames, onsets, and offsets are.
+            its estimations of frames, onsets, and offsets are according to a paper by <a href="https://arxiv.org/abs/2111.03017">Gardner</a>, presented at ICLR 2022.
             While MT3 is not a lightweight technology, it is very
             strong in its transcription capabilities–it can detect
             multiple instruments and notes played by those instruments.
@@ -159,31 +184,40 @@
 
         <h3>Spotify Basic Pitch</h3>
         <p>In the context of automatic music transcription,
-            Basic Pitch aims to deliver a product that is both powerful,
+            Spotify Basic Pitch aims to deliver a product that is both powerful,
             but lightweight enough to be used in a production environment.
             The library accepts a waveform as input, and translates it
             into MIDI format. Performance demonstrates that the system
             exceeds the benchmark of other AMT systems in terms of
-            frame-wise onset, multipitch, and note-activation estimations.
-            It is important to note that unlike MT3, Basic Pitch only
+            frame-wise onset, multipitch, and note-activation estimations as stated by a paper by <a href="https://arxiv.org/abs/2203.09893">Bittner</a>, presented at ICASSP 2022.
+            It is important to note that unlike MT3, Spotify Basic Pitch only
             estimates notes, not instruments.
         </p>
     </section>
 
     <section id="OpenNBS">
         <h2>Open Note Block Studio</h2>
-        <p>Open Note Block Studio is a software that allows users to
-            create MIDI files and map to Minecraft Note Blocks through
-            a graphical user interface. Within our program, we can create
-            our own Minecraft Note Block Studio (NBS) files using the
-            opennbs python package. To create our final audio outputs,
-            we use the nbswave python package transform the nbs file
-            into a .wav file.
+        <p>Open Note Block Studio is a software that allows users to create MIDI files and map 
+            to Minecraft Note Blocks through a graphical user interface. Within our program, 
+            we can create our own Minecraft Note Block Studio (NBS) files using the OpenNBS 
+            Python package. To create our final audio outputs, we use the nbswave Python 
+            package to transform the .nbs file into a .wav file. 
+        </p>
+    </section>
+
+    <section id="Approach">
+        <h2>Approach</h2>
+        <p>Using the input .wav file, we will be using combinations of Demucs and Spleeter to split
+            the stems of the song and then transcribe using MT3 or Spotify Basic Pitch. Once we have each
+            combination of Demucs and Spleeter transcribed using MT3 or Spotify Basic Pitch, we will combine
+            specific MIDI files to then be transcribed into Minecraft Note Blocks. This will use the OpenNBS and nbswave Python packages
+            to produce a NBS file and final audio output .wav file that represents the Minecraft Note Block cover.
         </p>
     </section>
 
     <section>
         <h2>Pipelines</h2>
+        <p> These pipelines represent our combinations of Demucs, Spleeter, MT3, and Spotify Basic Pitch.</p>
         <h3 class="pipeline" id="P1">Pipeline #1 - MT3 Only</h3>
         <p>This pipeline only uses the MT3 model.
             It transcribes the original source file and uses it as
@@ -270,7 +304,14 @@
         </p>
     </section>
 
-    <section>
+    <section id="outputs_results">
+        <h2>Outputs and Results</h2>
+        <p>The following are the results of feeding Track00001 from the BabySlakh dataset through our program with Demucs and Spleeter stem splitting, 
+            MT3 and Spotify Basic Pitch MIDI transcription, 
+            and finally producing the final audio output.</p>
+    </section>
+
+    <section id="input_file">
         <h3>Input File</h3>
         <p>This is our input file from the BabySlakh dataset.
             This is the first minute of Track00001 that we will be
@@ -363,7 +404,7 @@
     </section>
 
     <section id="Spotify_Basic_Pitch_Output">
-        <h3>Spotify Basic Pitch Output</h3>
+        <h3>Spotify Basic Pitch Transcription</h3>
         <p>After obtaining the split files
             from Demucs, Spleeter, and Demucs
             into Spleeter, the files are then
@@ -373,205 +414,203 @@
 
         <h4>Demucs</h4>
         <h5>bass.mid</h5>
-        <midi-visualizer type="piano-roll" id="demucsBasicPitchBass"
-            src="output_data/Track00001mix_files/demucs_basicPitch/bass.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/demucs_basicPitch/bass.mid" sound-font
             visualizer="#demucsBasicPitchBass"></midi-player>
+        <midi-visualizer type="piano-roll" id="demucsBasicPitchBass"
+            src="output_data/Track00001mix_files/demucs_basicPitch/bass.mid"></midi-visualizer>
 
         <h5>drums.mid</h5>
-        <midi-visualizer type="piano-roll" id="demucsBasicPitchDrums"
-            src="output_data/Track00001mix_files/demucs_basicPitch/drums.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/demucs_basicPitch/drums.mid" sound-font
             visualizer="#demucsBasicPitchDrums"></midi-player>
+        <midi-visualizer type="piano-roll" id="demucsBasicPitchDrums"
+            src="output_data/Track00001mix_files/demucs_basicPitch/drums.mid"></midi-visualizer>
 
         <h5>vocals.mid</h5>
-        <midi-visualizer type="piano-roll" id="demucsBasicPitchVocals"
-            src="output_data/Track00001mix_files/demucs_basicPitch/vocals.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/demucs_basicPitch/vocals.mid" sound-font
             visualizer="#demucsBasicPitchVocals"></midi-player>
+        <midi-visualizer type="piano-roll" id="demucsBasicPitchVocals"
+            src="output_data/Track00001mix_files/demucs_basicPitch/vocals.mid"></midi-visualizer>
 
         <h5>other.mid</h5>
-        <midi-visualizer type="piano-roll" id="demucsBasicPitchOther"
-            src="output_data/Track00001mix_files/demucs_basicPitch/other.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/demucs_basicPitch/other.mid" sound-font
             visualizer="#demucsBasicPitchOther"></midi-player>
+        <midi-visualizer type="piano-roll" id="demucsBasicPitchOther"
+            src="output_data/Track00001mix_files/demucs_basicPitch/other.mid"></midi-visualizer>
 
         <div class="spacer"></div>
 
         <h4>Spleeter</h4>
         <h5>bass.mid</h5>
-        <midi-visualizer type="piano-roll" id="spleeterBasicPitchBass"
-            src="output_data/Track00001mix_files/spleeter_basicPitch/bass.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/spleeter_basicPitch/bass.mid" sound-font
             visualizer="#spleeterBasicPitchBass"></midi-player>
+        <midi-visualizer type="piano-roll" id="spleeterBasicPitchBass"
+            src="output_data/Track00001mix_files/spleeter_basicPitch/bass.mid"></midi-visualizer>
 
         <h5>drums.mid</h5>
-        <midi-visualizer type="piano-roll" id="spleeterBasicPitchDrums"
-            src="output_data/Track00001mix_files/spleeter_basicPitch/drums.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/spleeter_basicPitch/drums.mid" sound-font
             visualizer="#spleeterBasicPitchDrums"></midi-player>
+        <midi-visualizer type="piano-roll" id="spleeterBasicPitchDrums"
+            src="output_data/Track00001mix_files/spleeter_basicPitch/drums.mid"></midi-visualizer>
 
         <h5>vocals.mid</h5>
-        <midi-visualizer type="piano-roll" id="spleeterBasicPitchVocals"
-            src="output_data/Track00001mix_files/spleeter_basicPitch/vocals.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/spleeter_basicPitch/vocals.mid" sound-font
             visualizer="#spleeterBasicPitchVocals"></midi-player>
+        <midi-visualizer type="piano-roll" id="spleeterBasicPitchVocals"
+            src="output_data/Track00001mix_files/spleeter_basicPitch/vocals.mid"></midi-visualizer>
 
         <h5>other.mid</h5>
-        <midi-visualizer type="piano-roll" id="spleeterBasicPitchOther"
-            src="output_data/Track00001mix_files/spleeter_basicPitch/other.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/spleeter_basicPitch/other.mid" sound-font
             visualizer="#spleeterBasicPitchOther"></midi-player>
-
+        <midi-visualizer type="piano-roll" id="spleeterBasicPitchOther"
+            src="output_data/Track00001mix_files/spleeter_basicPitch/other.mid"></midi-visualizer>
 
         <h5>piano.mid</h5>
-        <midi-visualizer type="piano-roll" id="spleeterBasicPitchPiano"
-            src="output_data/Track00001mix_files/spleeter_basicPitch/piano.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/spleeter_basicPitch/piano.mid" sound-font
             visualizer="#spleeterBasicPitchPiano"></midi-player>
+        <midi-visualizer type="piano-roll" id="spleeterBasicPitchPiano"
+            src="output_data/Track00001mix_files/spleeter_basicPitch/piano.mid"></midi-visualizer>
 
         <div class="spacer"></div>
 
         <h4>Demucs into Spleeter</h4>
         <h5>other.mid</h5>
-        <midi-visualizer type="piano-roll" id="demucsSpleeterBasicPitchOther"
-            src="output_data/Track00001mix_files/demucs_into_spleeter_basicPitch/other.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/demucs_into_spleeter_basicPitch/other.mid" sound-font
             visualizer="#demucsSpleeterBasicPitchOther"></midi-player>
+        <midi-visualizer type="piano-roll" id="demucsSpleeterBasicPitchOther"
+            src="output_data/Track00001mix_files/demucs_into_spleeter_basicPitch/other.mid"></midi-visualizer>
 
         <h5>piano.mid</h5>
-        <midi-visualizer type="piano-roll" id="demucsSpleeterBasicPitchPiano"
-            src="output_data/Track00001mix_files/demucs_into_spleeter_basicPitch/piano.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/demucs_into_spleeter_basicPitch/piano.mid" sound-font
             visualizer="#demucsSpleeterBasicPitchPiano"></midi-player>
+        <midi-visualizer type="piano-roll" id="demucsSpleeterBasicPitchPiano"
+            src="output_data/Track00001mix_files/demucs_into_spleeter_basicPitch/piano.mid"></midi-visualizer>
     </section>
 
     <section id="MT3_output">
-        <h3>MT3</h3>
-        <p>Additionally, these same split files as above are
+        <h3>MT3 Transcription</h3>
+        <p>After obtaining the split files
+            from Demucs, Spleeter, and Demucs
+            into Spleeter, the files are then
             transcribed to MIDI using MT3:
         </p>
 
         <h4>Demucs</h4>
         <h5>bass.mid</h5>
-        <midi-visualizer type="piano-roll" id="demucsmt3Bass"
-            src="output_data/Track00001mix_files/demucs_mt3/bass.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/demucs_mt3/bass.mid" sound-font
             visualizer="#demucsmt3Bass"></midi-player>
+        <midi-visualizer type="piano-roll" id="demucsmt3Bass"
+            src="output_data/Track00001mix_files/demucs_mt3/bass.mid"></midi-visualizer>
 
         <h5>drums.mid</h5>
-        <midi-visualizer type="piano-roll" id="demucsmt3Drums"
-            src="output_data/Track00001mix_files/demucs_mt3/drums.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/demucs_mt3/drums.mid" sound-font
             visualizer="#demucsmt3Drums"></midi-player>
+        <midi-visualizer type="piano-roll" id="demucsmt3Drums"
+            src="output_data/Track00001mix_files/demucs_mt3/drums.mid"></midi-visualizer>
 
         <h5>vocals.mid</h5>
-        <midi-visualizer type="piano-roll" id="demucsmt3Vocals"
-            src="output_data/Track00001mix_files/demucs_mt3/vocals.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/demucs_mt3/vocals.mid" sound-font
             visualizer="#demucsmt3Vocals"></midi-player>
+        <midi-visualizer type="piano-roll" id="demucsmt3Vocals"
+            src="output_data/Track00001mix_files/demucs_mt3/vocals.mid"></midi-visualizer>
 
         <h5>other.mid</h5>
-        <midi-visualizer type="piano-roll" id="demucsmt3Other"
-            src="output_data/Track00001mix_files/demucs_mt3/other.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/demucs_mt3/other.mid" sound-font
             visualizer="#demucsmt3Other"></midi-player>
+        <midi-visualizer type="piano-roll" id="demucsmt3Other"
+            src="output_data/Track00001mix_files/demucs_mt3/other.mid"></midi-visualizer>
 
         <div class="spacer"></div>
 
         <h4>Spleeter</h4>
         <h5>bass.mid</h5>
-        <midi-visualizer type="piano-roll" id="spleetermt3Bass"
-            src="output_data/Track00001mix_files/spleeter_mt3/bass.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/spleeter_mt3/bass.mid" sound-font
             visualizer="#spleetermt3Bass"></midi-player>
+        <midi-visualizer type="piano-roll" id="spleetermt3Bass"
+            src="output_data/Track00001mix_files/spleeter_mt3/bass.mid"></midi-visualizer>
 
         <h5>drums.mid</h5>
-        <midi-visualizer type="piano-roll" id="spleetermt3Drums"
-            src="output_data/Track00001mix_files/spleeter_mt3/drums.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/spleeter_mt3/drums.mid" sound-font
             visualizer="#spleetermt3Drums"></midi-player>
+        <midi-visualizer type="piano-roll" id="spleetermt3Drums"
+            src="output_data/Track00001mix_files/spleeter_mt3/drums.mid"></midi-visualizer>
 
         <h5>vocals.mid</h5>
-        <midi-visualizer type="piano-roll" id="spleetermt3Vocals"
-            src="output_data/Track00001mix_files/spleeter_mt3/vocals.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/spleeter_mt3/vocals.mid" sound-font
             visualizer="#spleetermt3Vocals"></midi-player>
+        <midi-visualizer type="piano-roll" id="spleetermt3Vocals"
+            src="output_data/Track00001mix_files/spleeter_mt3/vocals.mid"></midi-visualizer>
 
         <h5>other.mid</h5>
-        <midi-visualizer type="piano-roll" id="spleetermt3Other"
-            src="output_data/Track00001mix_files/spleeter_mt3/other.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/spleeter_mt3/other.mid" sound-font
             visualizer="#spleetermt3Other"></midi-player>
-
+        <midi-visualizer type="piano-roll" id="spleetermt3Other"
+            src="output_data/Track00001mix_files/spleeter_mt3/other.mid"></midi-visualizer>
 
         <h5>piano.mid</h5>
-        <midi-visualizer type="piano-roll" id="spleetermt3Piano"
-            src="output_data/Track00001mix_files/spleeter_mt3/piano.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/spleeter_mt3/piano.mid" sound-font
             visualizer="#spleetermt3Piano"></midi-player>
+        <midi-visualizer type="piano-roll" id="spleetermt3Piano"
+            src="output_data/Track00001mix_files/spleeter_mt3/piano.mid"></midi-visualizer>
 
         <div class="spacer"></div>
 
         <h4>Demucs into Spleeter</h4>
         <h5>other.mid</h5>
-        <midi-visualizer type="piano-roll" id="demucsSpleetermt3Other"
-            src="output_data/Track00001mix_files/demucs_into_spleeter_mt3/other.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/demucs_into_spleeter_mt3/other.mid" sound-font
             visualizer="#demucsSpleetermt3Other"></midi-player>
+        <midi-visualizer type="piano-roll" id="demucsSpleetermt3Other"
+            src="output_data/Track00001mix_files/demucs_into_spleeter_mt3/other.mid"></midi-visualizer>
 
         <h5>piano.mid</h5>
-        <midi-visualizer type="piano-roll" id="demucsSpleetermt3Piano"
-            src="output_data/Track00001mix_files/demucs_into_spleeter_mt3/piano.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/demucs_into_spleeter_mt3/piano.mid" sound-font
             visualizer="#demucsSpleetermt3Piano"></midi-player>
+        <midi-visualizer type="piano-roll" id="demucsSpleetermt3Piano"
+            src="output_data/Track00001mix_files/demucs_into_spleeter_mt3/piano.mid"></midi-visualizer>
     </section>
 
     <section id="Combining_MIDI">
-        <h3>Combining MIDI</h3>
+        <h3>Combining MIDIs</h3>
         <p>The following are the above five mentioned Pipelines with the MIDI stem files combined to create each
             pipeline MIDI file:
-            transcribed to MIDI using MT3:
         </p>
 
         <h5>Pipeline #1 Combined MIDI</h5>
-        <midi-visualizer type="piano-roll" id="pipeline1CombinedMIDI"
-            src="output_data/Track00001mix_files/pipeline1/mt3_only/Track00001mix.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/pipeline1/mt3_only/Track00001mix.mid" sound-font
             visualizer="#pipeline1CombinedMIDI"></midi-player>
+        <midi-visualizer type="piano-roll" id="pipeline1CombinedMIDI"
+            src="output_data/Track00001mix_files/pipeline1/mt3_only/Track00001mix.mid"></midi-visualizer>
 
         <h5>Pipeline #2 Combined MIDI</h5>
-        <midi-visualizer type="piano-roll" id="pipeline2CombinedMIDI"
-            src="output_data/Track00001mix_files/pipeline2/pipeline2_combined_midi.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/pipeline2/pipeline2_combined_midi.mid" sound-font
             visualizer="#pipeline2CombinedMIDI"></midi-player>
+        <midi-visualizer type="piano-roll" id="pipeline2CombinedMIDI"
+            src="output_data/Track00001mix_files/pipeline2/pipeline2_combined_midi.mid"></midi-visualizer>
 
         <h5>Pipeline #3 Combined MIDI</h5>
-        <midi-visualizer type="piano-roll" id="pipeline3CombinedMIDI"
-            src="output_data/Track00001mix_files/pipeline3/pipeline3_combined_midi.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/pipeline3/pipeline3_combined_midi.mid" sound-font
             visualizer="#pipeline3CombinedMIDI"></midi-player>
+        <midi-visualizer type="piano-roll" id="pipeline3CombinedMIDI"
+            src="output_data/Track00001mix_files/pipeline3/pipeline3_combined_midi.mid"></midi-visualizer>
 
         <h5>Pipeline #4 Combined MIDI</h5>
-        <midi-visualizer type="piano-roll" id="pipeline4CombinedMIDI"
-            src="output_data/Track00001mix_files/pipeline4/pipeline4_combined_midi.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/pipeline4/pipeline4_combined_midi.mid" sound-font
             visualizer="#pipeline4CombinedMIDI"></midi-player>
+        <midi-visualizer type="piano-roll" id="pipeline4CombinedMIDI"
+            src="output_data/Track00001mix_files/pipeline4/pipeline4_combined_midi.mid"></midi-visualizer>
 
         <h5>Pipeline #5 Combined MIDI</h5>
-        <midi-visualizer type="piano-roll" id="pipeline5CombinedMIDI"
-            src="output_data/Track00001mix_files/pipeline5/pipeline5_combined_midi.mid"></midi-visualizer>
         <midi-player src="output_data/Track00001mix_files/pipeline5/pipeline5_combined_midi.mid" sound-font
             visualizer="#pipeline5CombinedMIDI"></midi-player>
-
+        <midi-visualizer type="piano-roll" id="pipeline5CombinedMIDI"
+            src="output_data/Track00001mix_files/pipeline5/pipeline5_combined_midi.mid"></midi-visualizer>
     </section>
 
     <section id="NBS_output">
 
         <h3>MIDI to Noteblock Studio (NBS) to Final Audio Outputs</h3>
         <p>The MIDI files are then transcribed to Note Block Studio to be converted into Minecraft Note Blocks using
-            Note Block Studio (NBS) Files.
-            Finally, the NBS Files are converted to wav audio and produce the final output:
+            Note Block Studio (NBS) Files from the OpenNBS package in Python.
+            Finally, the NBS Files are converted to wav audio and produce the final output using the nbswave Python package:
         </p>
 
         <h5>Pipeline #1</h5>
@@ -602,7 +641,12 @@
 
     <section id="Evaluation">
         <h2>Evaluation</h2>
-        <p>We evaluated the performance of the specific MIDI files chosen for each pipeline in two ways.</p>
+        <p>We evaluated the performance of the specific MIDI files chosen for each pipeline in two ways. 
+            The following shows our evaluation methods, results, and conclusion. </p>
+    </section>
+
+    <section id="method1">
+        <h3>Evaluation Method #1</h3>
         <p> First we compared frequencies of instrument classes in transcribed MIDI files to those in the ground truth
             MIDI files on. For predicted MIDIs, we assigned a representative instrument class to the notes whose MIDI
             program numbers fell within the designated ranges for that particular class. For example, we assign the
@@ -611,6 +655,9 @@
             Pitch (Pipelines #4 and #5) only transcribes to a singular instrument of piano and does not transcribe to
             other instrument classes like MT3 does.
         </p>
+    </section>
+    <section id="method2">
+        <h3>Evaluation Method #2</h3>
         <p>
             To further evaluate our results quantitatively across all pipelines (Pipelines #1-#5), we measured the note
             onset, offset, and pitch accuracy of each pipeline. We used metrics including overlap of notes, precision,
@@ -618,12 +665,12 @@
             it predicted for a Minecraft Note Block cover. Specifically, we evaluated note accuracy based on the
             following combination of note properties:
         </p>
-        <ul>
+        <ol type="a">
             <li>Onset, offset, and pitch prediction</li>
             <li>Onset and pitch prediction</li>
             <li>Onset prediction</li>
             <li>Offset prediction</li>
-        </ul>
+        </ol>
         <p>We use the following mir_eval functions to evaluate the above combinations:</p>
 
         <ul>
@@ -639,84 +686,108 @@
             <li>Offsets: within 20% of the true note, maximum 0.1 ms of the true note</li>
             <li>Pitch: within 50 cents of the true note</li>
         </ul>
+    </section>
 
-        <h4>Analysis Figures and Heatmaps</h4>
-
-        <iframe src="https://drive.google.com/file/d/1-3FxOrr4-2imLD-inOazScaFcm495wY_/preview" width="640" height="480"
-            allow="autoplay"></iframe>
+    <section>
+        <h3 id="Barplots">Barplots - Evaluation Method #1</h3>
+        <h4>Pipeline #1: True vs. Predicted Instrument Class Frequencies</h4>
+        <div class="centerContent">
+            <iframe src="https://drive.google.com/file/d/1-3FxOrr4-2imLD-inOazScaFcm495wY_/preview" width="640" height="480"
+                allow="autoplay"></iframe>
+        </div>
         <p>This bar plot shows frequencies of predicted
-            instruments classes and true instrument classes for MT3. We see that 4 instrument classes - synth effects,
+            instruments classes and true instrument classes for Pipeline #1, transcribed by MT3 with no stem splitting. We see that 4 instrument classes - synth effects,
             percussive, ethnic, and sound effects - were undetected in the predicted transcribed MIDI that MT3
             generated. Overall, frequencies of predicted instrument classes are close to those that are present in the
             ground truths, except for the guitar, piano, and string (continued) classes, for which the predicted
-            frequencies were more off than actual frequencies of them.</p>
-
-        <iframe src="https://drive.google.com/file/d/1-8Q43I4CNMzqvxfGKpuo1QhRWXxTb8CC/preview" width="640" height="480"
-            allow="autoplay"></iframe>
-
+            frequencies had a larger difference between the predicted and actual frequencies of them.</p>
+        
+        <h4>Pipeline #2: True vs. Predicted Instrument Class Frequencies</h4>
+        <div class="centerContent">
+            <iframe src="https://drive.google.com/file/d/1-8Q43I4CNMzqvxfGKpuo1QhRWXxTb8CC/preview" width="640" height="480"
+                allow="autoplay"></iframe>
+        </div>
         <p>This bar plot shows frequencies of predicted instruments classes and true instrument classes for Pipeline #2,
             Demucs and Spleeter transcribed by MT3. As shown in this bar plot, it overestimated the frequencies of all
             instrument classes from our predictions except bass and synth lead. Tracks of the predicted MIDI also did
             not detect instruments from four classes, which were percussive, ethnic, synth effects, and sound effects.
         </p>
 
-        <iframe src="https://drive.google.com/file/d/1-4xAkEQN71YF05--ByqZ592TN4rH8LM8/preview" width="640" height="480"
-            allow="autoplay"></iframe>
-        <p>This bar plot shows frequencies of predicted instruments classes and true instrument classes for pipeline 3,
-            which is Spleeter transcribed by Spotify Basic Pitch. In this bar plot, it has also mostly overestimated the
+        <h4>Pipeline #3: True vs. Predicted Instrument Class Frequencies</h4>
+        <div class="centerContent">
+            <iframe src="https://drive.google.com/file/d/1-4xAkEQN71YF05--ByqZ592TN4rH8LM8/preview" width="640" height="480"
+                allow="autoplay"></iframe>
+        </div>
+        <p>This bar plot shows frequencies of predicted instruments classes and true instrument classes for Pipeline #3,
+           Spleeter transcribed by MT3. In this bar plot, it has also mostly overestimated the
             frequencies of all instrument classes. Tracks of the predicted MIDI did not detect instruments from four
             classes, which were percussive, ethnic, synth effects, and sound effects. These results are similar to
             Pipeline #2 as they overestimated most of the frequencies and even overestimated more than the previous
             pipeline.</p>
-
-        <iframe src="https://drive.google.com/file/d/1-Dw2M1DzB6lvkkTRwagbEg9hTRXmPXVz/preview" width="640" height="480"
-            allow="autoplay"></iframe>
-        <p>Onset, Offset, and Pitch: These are evaluation results that consider note offset, onset, and pitch accuracy.
+    </section>
+    
+    <section id="Heatmaps">
+        <h3>Heatmaps - Evaluation Method #2</h3>
+        <h4>Onset, Offset, and Pitch</h4>
+        <div class="centerContent">
+            <iframe src="https://drive.google.com/file/d/1-Dw2M1DzB6lvkkTRwagbEg9hTRXmPXVz/preview" width="640" height="480"
+                allow="autoplay"></iframe>
+        </div>
+        <p>These are evaluation results that consider note offset, onset, and pitch accuracy.
             Across these 3 properties, Pipeline #1 performed the best in precision, recall, and f1 values. However,
             Pipelines #4 and #5 (the ones that use Spotify Basic Pitch) had the best overlap performance between the
             true and prediction notes.</p>
-
-        <iframe src="https://drive.google.com/file/d/1-DZjaF85Ffdmi4r33637v1y1FaJyYm5D/preview" width="640" height="480"
-            allow="autoplay"></iframe>
-        <p>Onset and Pitch: These are the evaluation results considering the onset and pitch accuracies. Overall,
+        
+        <h4>Onset and Pitch</h4>
+        <div class="centerContent">
+            <iframe src="https://drive.google.com/file/d/1-DZjaF85Ffdmi4r33637v1y1FaJyYm5D/preview" width="640" height="480"
+                allow="autoplay"></iframe>
+        </div>
+        <p>These are the evaluation results considering the onset and pitch accuracies. Overall,
             Pipeline #1 had the best performance in terms of precision, recall, and f1 values, while Pipeline #5 had the
             poorest performance. However, Pipeline #5 had the best performance in overlap while Pipeline #1 had the
             worst performance. This signals the strengths of Basic Pitch and MT3; MT3 performs better in pitch accuracy
             while Basic Pitch is better at onset detection.</p>
 
-        <iframe src="https://drive.google.com/file/d/1-DOynD6OVESPSy98eZU2YYZ93461KAea/preview" width="640" height="480"
-            allow="autoplay"></iframe>
-        <p>Onset: These are evaluation results considering only note onset prediction performance. In terms of
+        <h4>Onset</h4>
+        <div class="centerContent">
+            <iframe src="https://drive.google.com/file/d/1-DOynD6OVESPSy98eZU2YYZ93461KAea/preview" width="640" height="480"
+                allow="autoplay"></iframe>
+        </div>
+        <p>These are evaluation results considering only note onset prediction performance. In terms of
             precision, Pipelines #4 and #5 performed the best, but in terms of recall, they performed the worst.
             Observing the f1 scores, Pipelines #4 and #5 performed the best. Overall, the range of performance scores is
             quite small.</p>
 
-        <iframe src="https://drive.google.com/file/d/1-ByqlbxbiYfk0olsUxtd2Ce-7dghFkyf/preview" width="640" height="480"
-            allow="autoplay"></iframe>
-        <p>Offset: These are evaluation results that consider only note offset prediction performance. Pipelines that
+        <h4>Offset</h4>
+        <div class="centerContent">
+            <iframe src="https://drive.google.com/file/d/1-ByqlbxbiYfk0olsUxtd2Ce-7dghFkyf/preview" width="640" height="480"
+                allow="autoplay"></iframe>
+        </div>
+        <p>These are evaluation results that consider only note offset prediction performance. Pipelines that
             use Basic Pitch for transcription (Pipelines #4 and #5) clearly performed the best.</p>
-
-        <h4>Conclusions</h4>
-        <p>For instrument class predictions (which only apply to Pipelines #1, #2, and #3), the goal of evaluating was
+    </section>
+    <section id="conclusion">
+        <h2>Conclusion</h2>
+        <p>With Evaluation Method #1, for instrument class predictions (which only apply to Pipelines #1, #2, and #3), the goal of evaluating was
             to see whether or not stem splitting prior to MT3 transcription helps. As it was observed, MT3 transcription
             without prior stem splitting led to better instrument class identification. Overall, prior stem splitting
             led to an overestimation of instrument classes.</p>
 
-        <p>This evaluation was used to calculate the precision, recall, F1-score, and overlap values for each pipeline
+        <p>Evaluation Method #2 was used to calculate the precision, recall, F1-score, and overlap values for each pipeline
             per comparison criterion of onset, offset, and pitch. Considering all metrics, Pipelines #1, #2, #3
             performed the best in these observations. In terms of onset and offset accuracy, pipelines that use Spotify
             Basic Pitch (Pipelines #4 and #5) performed the best.</p>
 
     </section>
 
-
     <section id="Listen-In-Minecraft">
         <h2>Listen in Minecraft!</h2>
-        <p> By taking the nbs file that was created through our pipelines, we can import this file into Open Note Block Studio and convert it 
+        <p> By taking the NBS file that was created through our pipelines, we can import this file into Open Note Block Studio and convert it 
             into a Minecraft schematic. This schematic can then be placed into a world in Minecraft and be played within the game. Seen below
-            is Track00001 of our dataset using Pipeline #1 in Minecraft using the actual note blocks:
+            is Track00001 of our dataset using Pipeline #1 in Minecraft using the actual Note Blocks:
         </p>
-        <div class = "video">
+        <div class = "centerContent">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/bRbF6phE7Fo?si=081Jt7bC0pbL1eZf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </section>
