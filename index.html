@@ -71,9 +71,8 @@
                             <li><a class="dropdown-item" href="#Demucs_Splitting">Demucs Splitting</a></li>
                             <li><a class="dropdown-item" href="#Spleeter_Splitting">Spleeter Splitting</a></li>
                             <li><a class="dropdown-item" href="#Demucs-into_Spleeter">Demucs Into Spleeter</a></li>
-                            <li><a class="dropdown-item" href="#Spotify_Basic_Pitch_Output">Spotify Basic Pitch
-                                Output</a></li>
-                            <li><a class="dropdown-item" href="#MT3_output">MT3 Output</a></li>
+                            <li><a class="dropdown-item" href="#Spotify_Basic_Pitch_Output">Spotify Basic Pitch Transcription</a></li>
+                            <li><a class="dropdown-item" href="#MT3_output">MT3 Transcription</a></li>
                             <li><a class="dropdown-item" href="#Combining_MIDI">Combining MIDIs</a></li>
                             <li><a class="dropdown-item" href="#NBS_output">NBS Output</a></li>
                         </ul>
@@ -131,15 +130,15 @@
     <section id="Motivation">
         <h2>Motivation</h2>
         <p>There are many covers of existing songs that are made using
-            Minecraft Note Blocks, however the process of converting
+            Minecraft Note Blocks. However the process of converting
             these songs to Note Block format is obscure.
             This project aims to automate the transcription
-            process using a model to transform a song to MIDI format,
+            process using machine learning models to split the song's stems, transform into MIDI format,
             and MIDI format to a set of Minecraft Note blocks.
             While the production level version of this project
             can be used to create more noteblock covers for existing
             songs, the main motivation behind it is the interesting and
-            “cool” aspect of audio transcription.</p>
+            “cool” aspect of audio splitting and transcription.</p>
     </section>
 
     <section id="What-is-NB?">
@@ -148,37 +147,36 @@
             notes on different instruments. Each block can be tuned to a specific note by right-clicking, which cycles
             through a set of pitches. Different instruments can be mimicked depending on the block type placed beneath
             the Note Block. This functionality enables the creation of elaborate musical sequences within
-            the game, which we attempt to automate in this project using various stem splitters, MIDI transcriptors, and
-            the OpenNBS library in Python. See below for the different sounds a Note Block can make:
+            the game See below for the different sounds a Note Block can make:
         </p>
         <div class = "centerContent">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/ZwL3_fewrg8?si=0DVaHoDapyy_KrGq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </section>
     <section id="Models">
-        <h2>Machine Listening Models</h2>
+        <h2>Machine Learning Models</h2>
         <h3>Spleeter</h3>
-        <p>A music source separation tool that uses pre-trained models.
+        <p>A music source separation tool that uses pre-trained models crated by Deezer.
             It takes in a waveform as input, and outputs a 5 splits max:
-            vocals, drums, bass, piano, and other. Research papers state
+            vocals, drums, bass, piano, and other. A paper by <a href="https://doi.org/10.21105/joss.02154">Hennequin</a> states
             that it is one of the best performing 4-stem separation models
             using the musdb18 benchmark.</p>
 
         <h3>Demucs</h3>
         <p>Short for “Deep Extractor for Music Sources,” it is a
-            stem splitting model that takes in a waveform as input.
+            stem splitting model created by Facebook that takes in a waveform as input.
             The output is a 4-way split of bass, drums, vocals, and
             other sounds. Specifically, the version of Demucs being
             used is an implementation using transformers, which performs
             better by accounting for both long and short music content.
-            In research papers, it has been stated to perform better
+            In a paper by <a href="https://arxiv.org/abs/1909.01174">Défossez</a>, it has been stated to perform better
             source separation for bass and drum splits.</p>
 
         <h3>MT3</h3>
         <p>A music transcription model that takes a waveform as
-            input and transcribes it to a MIDI equivalent.
+            input and transcribes it to a MIDI equivalent created by Google Magenta.
             It performs well in regards to evaluating how accurate
-            its estimations of frames, onsets, and offsets are.
+            its estimations of frames, onsets, and offsets are according to a paper by <a href="https://arxiv.org/abs/2111.03017">Gardner</a>, presented at ICLR 2022.
             While MT3 is not a lightweight technology, it is very
             strong in its transcription capabilities–it can detect
             multiple instruments and notes played by those instruments.
@@ -186,13 +184,13 @@
 
         <h3>Spotify Basic Pitch</h3>
         <p>In the context of automatic music transcription,
-            Basic Pitch aims to deliver a product that is both powerful,
+            Spotify Basic Pitch aims to deliver a product that is both powerful,
             but lightweight enough to be used in a production environment.
             The library accepts a waveform as input, and translates it
             into MIDI format. Performance demonstrates that the system
             exceeds the benchmark of other AMT systems in terms of
-            frame-wise onset, multipitch, and note-activation estimations.
-            It is important to note that unlike MT3, Basic Pitch only
+            frame-wise onset, multipitch, and note-activation estimations as stated by a paper by <a href="https://arxiv.org/abs/2203.09893">Bittner</a>, presented at ICASSP 2022.
+            It is important to note that unlike MT3, Spotify Basic Pitch only
             estimates notes, not instruments.
         </p>
     </section>
@@ -202,7 +200,7 @@
         <p>Open Note Block Studio is a software that allows users to create MIDI files and map 
             to Minecraft Note Blocks through a graphical user interface. Within our program, 
             we can create our own Minecraft Note Block Studio (NBS) files using the OpenNBS 
-            python package. To create our final audio outputs, we use the nbswave python 
+            Python package. To create our final audio outputs, we use the nbswave Python 
             package to transform the .nbs file into a .wav file. 
         </p>
     </section>
@@ -212,8 +210,8 @@
         <p>Using the input .wav file, we will be using combinations of Demucs and Spleeter to split
             the stems of the song and then transcribe using MT3 or Spotify Basic Pitch. Once we have each
             combination of Demucs and Spleeter transcribed using MT3 or Spotify Basic Pitch, we will combine
-            specific MIDI files to then be transcribed into Minecraft Note Blocks using the OpenNBS and nbswave python packages
-            to produce a NBS file and final audio output wav file that represents the Minecraft Note Block cover.
+            specific MIDI files to then be transcribed into Minecraft Note Blocks. This will use the OpenNBS and nbswave Python packages
+            to produce a NBS file and final audio output .wav file that represents the Minecraft Note Block cover.
         </p>
     </section>
 
@@ -406,7 +404,7 @@
     </section>
 
     <section id="Spotify_Basic_Pitch_Output">
-        <h3>Spotify Basic Pitch Output</h3>
+        <h3>Spotify Basic Pitch Transcription</h3>
         <p>After obtaining the split files
             from Demucs, Spleeter, and Demucs
             into Spleeter, the files are then
@@ -489,8 +487,10 @@
     </section>
 
     <section id="MT3_output">
-        <h3>MT3</h3>
-        <p>Additionally, these same split files as above are
+        <h3>MT3 Transcription</h3>
+        <p>After obtaining the split files
+            from Demucs, Spleeter, and Demucs
+            into Spleeter, the files are then
             transcribed to MIDI using MT3:
         </p>
 
@@ -569,10 +569,9 @@
     </section>
 
     <section id="Combining_MIDI">
-        <h3>Combining MIDI</h3>
+        <h3>Combining MIDIs</h3>
         <p>The following are the above five mentioned Pipelines with the MIDI stem files combined to create each
             pipeline MIDI file:
-            transcribed to MIDI using MT3:
         </p>
 
         <h5>Pipeline #1 Combined MIDI</h5>
@@ -610,8 +609,8 @@
 
         <h3>MIDI to Noteblock Studio (NBS) to Final Audio Outputs</h3>
         <p>The MIDI files are then transcribed to Note Block Studio to be converted into Minecraft Note Blocks using
-            Note Block Studio (NBS) Files.
-            Finally, the NBS Files are converted to wav audio and produce the final output:
+            Note Block Studio (NBS) Files from the OpenNBS package in Python.
+            Finally, the NBS Files are converted to wav audio and produce the final output using the nbswave Python package:
         </p>
 
         <h5>Pipeline #1</h5>
@@ -666,12 +665,12 @@
             it predicted for a Minecraft Note Block cover. Specifically, we evaluated note accuracy based on the
             following combination of note properties:
         </p>
-        <ul>
+        <ol type="a">
             <li>Onset, offset, and pitch prediction</li>
             <li>Onset and pitch prediction</li>
             <li>Onset prediction</li>
             <li>Offset prediction</li>
-        </ul>
+        </ol>
         <p>We use the following mir_eval functions to evaluate the above combinations:</p>
 
         <ul>
@@ -697,11 +696,11 @@
                 allow="autoplay"></iframe>
         </div>
         <p>This bar plot shows frequencies of predicted
-            instruments classes and true instrument classes for MT3. We see that 4 instrument classes - synth effects,
+            instruments classes and true instrument classes for Pipeline #1, transcribed by MT3 with no stem splitting. We see that 4 instrument classes - synth effects,
             percussive, ethnic, and sound effects - were undetected in the predicted transcribed MIDI that MT3
             generated. Overall, frequencies of predicted instrument classes are close to those that are present in the
             ground truths, except for the guitar, piano, and string (continued) classes, for which the predicted
-            frequencies were more off than actual frequencies of them.</p>
+            frequencies had a larger difference between the predicted and actual frequencies of them.</p>
         
         <h4>Pipeline #2: True vs. Predicted Instrument Class Frequencies</h4>
         <div class="centerContent">
@@ -719,8 +718,8 @@
             <iframe src="https://drive.google.com/file/d/1-4xAkEQN71YF05--ByqZ592TN4rH8LM8/preview" width="640" height="480"
                 allow="autoplay"></iframe>
         </div>
-        <p>This bar plot shows frequencies of predicted instruments classes and true instrument classes for pipeline 3,
-            which is Spleeter transcribed by Spotify Basic Pitch. In this bar plot, it has also mostly overestimated the
+        <p>This bar plot shows frequencies of predicted instruments classes and true instrument classes for Pipeline #3,
+           Spleeter transcribed by MT3. In this bar plot, it has also mostly overestimated the
             frequencies of all instrument classes. Tracks of the predicted MIDI did not detect instruments from four
             classes, which were percussive, ethnic, synth effects, and sound effects. These results are similar to
             Pipeline #2 as they overestimated most of the frequencies and even overestimated more than the previous
@@ -760,21 +759,22 @@
             Observing the f1 scores, Pipelines #4 and #5 performed the best. Overall, the range of performance scores is
             quite small.</p>
 
+        <h4>Offset</h4>
         <div class="centerContent">
             <iframe src="https://drive.google.com/file/d/1-ByqlbxbiYfk0olsUxtd2Ce-7dghFkyf/preview" width="640" height="480"
                 allow="autoplay"></iframe>
         </div>
-        <p>Offset: These are evaluation results that consider only note offset prediction performance. Pipelines that
+        <p>These are evaluation results that consider only note offset prediction performance. Pipelines that
             use Basic Pitch for transcription (Pipelines #4 and #5) clearly performed the best.</p>
     </section>
     <section id="conclusion">
         <h2>Conclusion</h2>
-        <p>For instrument class predictions (which only apply to Pipelines #1, #2, and #3), the goal of evaluating was
+        <p>With Evaluation Method #1, for instrument class predictions (which only apply to Pipelines #1, #2, and #3), the goal of evaluating was
             to see whether or not stem splitting prior to MT3 transcription helps. As it was observed, MT3 transcription
             without prior stem splitting led to better instrument class identification. Overall, prior stem splitting
             led to an overestimation of instrument classes.</p>
 
-        <p>This evaluation was used to calculate the precision, recall, F1-score, and overlap values for each pipeline
+        <p>Evaluation Method #2 was used to calculate the precision, recall, F1-score, and overlap values for each pipeline
             per comparison criterion of onset, offset, and pitch. Considering all metrics, Pipelines #1, #2, #3
             performed the best in these observations. In terms of onset and offset accuracy, pipelines that use Spotify
             Basic Pitch (Pipelines #4 and #5) performed the best.</p>
