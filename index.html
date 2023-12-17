@@ -63,9 +63,11 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Results
+                            Outputs and Results
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#outputs_results">Outputs and Results</a></li>
+                            <li><a class="dropdown-item" href="#input_file">Input File</a></li>
                             <li><a class="dropdown-item" href="#Demucs_Splitting">Demucs Splitting</a></li>
                             <li><a class="dropdown-item" href="#Spleeter_Splitting">Spleeter Splitting</a></li>
                             <li><a class="dropdown-item" href="#Demucs-into_Spleeter">Demucs Into Spleeter</a></li>
@@ -82,9 +84,11 @@
                             Evaluation
                         </a>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#Evaluation">Evaluation (Overview)</a></li>
                             <li><a class="dropdown-item" href="#method1">Evaluation Method #1</a></li>
                             <li><a class="dropdown-item" href="#method2">Evaluation Method #2</a></li>
-                            <li><a class="dropdown-item" href="#Figures">Analysis Figures and Heatmaps</a></li>
+                            <li><a class="dropdown-item" href="#Barplots">Barplots</a></li>
+                            <li><a class="dropdown-item" href="#Heatmaps">Heatmaps</a></li>
                             <li><a class="dropdown-item" href="#conclusion">Conclusion</a></li>
                         </ul>
                     </li>
@@ -302,12 +306,12 @@
         </p>
     </section>
 
-    <section id="Results">
-        <h3>Results</h3>
-        <p>Insert info here</p>
+    <section id="outputs_results">
+        <h2>Outputs and Results</h2>
+        <p>The following are the results of feeding Track00001 through our program.</p>
     </section>
 
-    <section>
+    <section id="input_file">
         <h3>Input File</h3>
         <p>This is our input file from the BabySlakh dataset.
             This is the first minute of Track00001 that we will be
@@ -637,7 +641,11 @@
     <section id="Evaluation">
         <h2>Evaluation</h2>
         <p>We evaluated the performance of the specific MIDI files chosen for each pipeline in two ways.</p>
-        <p id="method1"> First we compared frequencies of instrument classes in transcribed MIDI files to those in the ground truth
+    </section>
+
+    <section id="method1">
+        <h4>Evaluation Method #1</h4>
+        <p> First we compared frequencies of instrument classes in transcribed MIDI files to those in the ground truth
             MIDI files on. For predicted MIDIs, we assigned a representative instrument class to the notes whose MIDI
             program numbers fell within the designated ranges for that particular class. For example, we assign the
             instrument class of “piano” to notes that have program numbers between 0 and 7, inclusive. Note that this
@@ -645,7 +653,10 @@
             Pitch (Pipelines #4 and #5) only transcribes to a singular instrument of piano and does not transcribe to
             other instrument classes like MT3 does.
         </p>
-        <p id="method2">
+    </section>
+    <section id="method2">
+        <h4>Evaluation Method #2</h4>
+        <p>
             To further evaluate our results quantitatively across all pipelines (Pipelines #1-#5), we measured the note
             onset, offset, and pitch accuracy of each pipeline. We used metrics including overlap of notes, precision,
             recall, and f1 score to understand how well each pipeline accomplished each type of detection for the MIDIs
@@ -673,8 +684,10 @@
             <li>Offsets: within 20% of the true note, maximum 0.1 ms of the true note</li>
             <li>Pitch: within 50 cents of the true note</li>
         </ul>
+    </section>
 
-        <h4 id="Figures">Analysis Figures and Heatmaps</h4>
+    <section>
+        <h4 id="Barplots">Barplots</h4>
 
         <div class="centerContent">
             <iframe src="https://drive.google.com/file/d/1-3FxOrr4-2imLD-inOazScaFcm495wY_/preview" width="640" height="480"
@@ -707,7 +720,10 @@
             classes, which were percussive, ethnic, synth effects, and sound effects. These results are similar to
             Pipeline #2 as they overestimated most of the frequencies and even overestimated more than the previous
             pipeline.</p>
-        
+    </section>
+    
+    <section id="Heatmaps">
+        <h4>Heatmaps</h4>
         <div class="centerContent">
             <iframe src="https://drive.google.com/file/d/1-Dw2M1DzB6lvkkTRwagbEg9hTRXmPXVz/preview" width="640" height="480"
                 allow="autoplay"></iframe>
@@ -742,8 +758,9 @@
         </div>
         <p>Offset: These are evaluation results that consider only note offset prediction performance. Pipelines that
             use Basic Pitch for transcription (Pipelines #4 and #5) clearly performed the best.</p>
-
-        <h4 id="conclusion">Conclusion</h4>
+    </section>
+    <section id="conclusion">
+        <h4>Conclusion</h4>
         <p>For instrument class predictions (which only apply to Pipelines #1, #2, and #3), the goal of evaluating was
             to see whether or not stem splitting prior to MT3 transcription helps. As it was observed, MT3 transcription
             without prior stem splitting led to better instrument class identification. Overall, prior stem splitting
