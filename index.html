@@ -87,8 +87,8 @@
                             <li><a class="dropdown-item" href="#Evaluation">Evaluation (Overview)</a></li>
                             <li><a class="dropdown-item" href="#method1">Evaluation Method #1</a></li>
                             <li><a class="dropdown-item" href="#method2">Evaluation Method #2</a></li>
-                            <li><a class="dropdown-item" href="#Barplots">Barplots</a></li>
-                            <li><a class="dropdown-item" href="#Heatmaps">Heatmaps</a></li>
+                            <li><a class="dropdown-item" href="#Barplots">Barplots - Eval #1</a></li>
+                            <li><a class="dropdown-item" href="#Heatmaps">Heatmaps - Eval #2</a></li>
                             <li><a class="dropdown-item" href="#conclusion">Conclusion</a></li>
                         </ul>
                     </li>
@@ -308,7 +308,9 @@
 
     <section id="outputs_results">
         <h2>Outputs and Results</h2>
-        <p>The following are the results of feeding Track00001 through our program.</p>
+        <p>The following are the results of feeding Track00001 from the BabySlakh dataset through our program with Demucs and Spleeter stem splitting, 
+            MT3 and Spotify Basic Pitch MIDI transcription, 
+            and finally producing the final audio output.</p>
     </section>
 
     <section id="input_file">
@@ -640,11 +642,12 @@
 
     <section id="Evaluation">
         <h2>Evaluation</h2>
-        <p>We evaluated the performance of the specific MIDI files chosen for each pipeline in two ways.</p>
+        <p>We evaluated the performance of the specific MIDI files chosen for each pipeline in two ways. 
+            The following shows our evaluation methods, results, and conclusion. </p>
     </section>
 
     <section id="method1">
-        <h4>Evaluation Method #1</h4>
+        <h3>Evaluation Method #1</h3>
         <p> First we compared frequencies of instrument classes in transcribed MIDI files to those in the ground truth
             MIDI files on. For predicted MIDIs, we assigned a representative instrument class to the notes whose MIDI
             program numbers fell within the designated ranges for that particular class. For example, we assign the
@@ -655,7 +658,7 @@
         </p>
     </section>
     <section id="method2">
-        <h4>Evaluation Method #2</h4>
+        <h3>Evaluation Method #2</h3>
         <p>
             To further evaluate our results quantitatively across all pipelines (Pipelines #1-#5), we measured the note
             onset, offset, and pitch accuracy of each pipeline. We used metrics including overlap of notes, precision,
@@ -687,8 +690,8 @@
     </section>
 
     <section>
-        <h4 id="Barplots">Barplots</h4>
-
+        <h3 id="Barplots">Barplots - Evaluation Method #1</h3>
+        <h4>Pipeline #1: True vs. Predicted Instrument Class Frequencies</h4>
         <div class="centerContent">
             <iframe src="https://drive.google.com/file/d/1-3FxOrr4-2imLD-inOazScaFcm495wY_/preview" width="640" height="480"
                 allow="autoplay"></iframe>
@@ -699,7 +702,8 @@
             generated. Overall, frequencies of predicted instrument classes are close to those that are present in the
             ground truths, except for the guitar, piano, and string (continued) classes, for which the predicted
             frequencies were more off than actual frequencies of them.</p>
-
+        
+        <h4>Pipeline #2: True vs. Predicted Instrument Class Frequencies</h4>
         <div class="centerContent">
             <iframe src="https://drive.google.com/file/d/1-8Q43I4CNMzqvxfGKpuo1QhRWXxTb8CC/preview" width="640" height="480"
                 allow="autoplay"></iframe>
@@ -710,6 +714,7 @@
             not detect instruments from four classes, which were percussive, ethnic, synth effects, and sound effects.
         </p>
 
+        <h4>Pipeline #3: True vs. Predicted Instrument Class Frequencies</h4>
         <div class="centerContent">
             <iframe src="https://drive.google.com/file/d/1-4xAkEQN71YF05--ByqZ592TN4rH8LM8/preview" width="640" height="480"
                 allow="autoplay"></iframe>
@@ -723,31 +728,34 @@
     </section>
     
     <section id="Heatmaps">
-        <h4>Heatmaps</h4>
+        <h3>Heatmaps - Evaluation Method #2</h3>
+        <h4>Onset, Offset, and Pitch</h4>
         <div class="centerContent">
             <iframe src="https://drive.google.com/file/d/1-Dw2M1DzB6lvkkTRwagbEg9hTRXmPXVz/preview" width="640" height="480"
                 allow="autoplay"></iframe>
         </div>
-        <p>Onset, Offset, and Pitch: These are evaluation results that consider note offset, onset, and pitch accuracy.
+        <p>These are evaluation results that consider note offset, onset, and pitch accuracy.
             Across these 3 properties, Pipeline #1 performed the best in precision, recall, and f1 values. However,
             Pipelines #4 and #5 (the ones that use Spotify Basic Pitch) had the best overlap performance between the
             true and prediction notes.</p>
         
+        <h4>Onset and Pitch</h4>
         <div class="centerContent">
             <iframe src="https://drive.google.com/file/d/1-DZjaF85Ffdmi4r33637v1y1FaJyYm5D/preview" width="640" height="480"
                 allow="autoplay"></iframe>
         </div>
-        <p>Onset and Pitch: These are the evaluation results considering the onset and pitch accuracies. Overall,
+        <p>These are the evaluation results considering the onset and pitch accuracies. Overall,
             Pipeline #1 had the best performance in terms of precision, recall, and f1 values, while Pipeline #5 had the
             poorest performance. However, Pipeline #5 had the best performance in overlap while Pipeline #1 had the
             worst performance. This signals the strengths of Basic Pitch and MT3; MT3 performs better in pitch accuracy
             while Basic Pitch is better at onset detection.</p>
 
+        <h4>Onset</h4>
         <div class="centerContent">
             <iframe src="https://drive.google.com/file/d/1-DOynD6OVESPSy98eZU2YYZ93461KAea/preview" width="640" height="480"
                 allow="autoplay"></iframe>
         </div>
-        <p>Onset: These are evaluation results considering only note onset prediction performance. In terms of
+        <p>These are evaluation results considering only note onset prediction performance. In terms of
             precision, Pipelines #4 and #5 performed the best, but in terms of recall, they performed the worst.
             Observing the f1 scores, Pipelines #4 and #5 performed the best. Overall, the range of performance scores is
             quite small.</p>
@@ -760,7 +768,7 @@
             use Basic Pitch for transcription (Pipelines #4 and #5) clearly performed the best.</p>
     </section>
     <section id="conclusion">
-        <h4>Conclusion</h4>
+        <h2>Conclusion</h2>
         <p>For instrument class predictions (which only apply to Pipelines #1, #2, and #3), the goal of evaluating was
             to see whether or not stem splitting prior to MT3 transcription helps. As it was observed, MT3 transcription
             without prior stem splitting led to better instrument class identification. Overall, prior stem splitting

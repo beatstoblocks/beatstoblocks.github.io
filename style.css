@@ -110,12 +110,20 @@ body {
     scroll-margin-top: 100px;
 }
 
-#Figures, #method2, #conclusion {
+#Figures, #conclusion {
     scroll-margin-top: 100px;
 }
 
-#method1{
-    scroll-margin-top: 200px;
+#method1, #method2 {
+    scroll-margin-top: 75x;
+}
+
+#Barplots {
+    scroll-margin-top: 100px;
+}
+
+#conclusion {
+    scroll-margin-top: 80px;
 }
 
 h1 {
