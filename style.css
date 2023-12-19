@@ -83,7 +83,8 @@ body {
 .title h1 {
     color: white;
     margin-top: 25px;
-    font-size: 5em;
+    font-size: 7em;
+    text-align: center;
     text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
@@ -93,8 +94,9 @@ body {
 
 .title p {
     font-weight:  300;
-    font-size: 1.5em;
+    font-size: 2em;
     color: white;
+    text-align: center;
     text-shadow:
     -1px -1px 0 #000,
     1px -1px 0 #000,
@@ -102,6 +104,10 @@ body {
     1px 1px 0 #000;
 }
 
+#emails {
+    font-size: 1.5em;
+    text-align: center;
+}
 .classInfo {
     text-align: center;
 }
@@ -203,12 +209,15 @@ section {
 /* Responsive Styles */
 @media screen and (max-width: 600px) {
     .title h1 {
-        font-size: 2.5em;
+        font-size: 3em;
     }
 
     .title p {
-        font-size: 1em;
+        font-size: 1.5em;
         text-align: center;
+    }
+    #emails {
+        font-size: 1em;
     }
     .section {
         max-width: 95%;
@@ -226,12 +235,15 @@ section {
 }
 @media screen and (max-width: 400px) {
     .title h1 {
-        font-size: 2.5em;
+        font-size: 3em;
     }
 
     .title p {
-        font-size: 1em;
+        font-size: 1.5em;
         text-align: center;
+    }
+    #emails {
+        font-size: 1em;
     }
     .section {
         max-width: 95%;
